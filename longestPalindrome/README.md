@@ -1,4 +1,4 @@
-# algorithms
+# Longest Palindrome
 
 Longest Palindrome implements a set of test cases using Go,
 including how to use strings in Go and a general overview of
