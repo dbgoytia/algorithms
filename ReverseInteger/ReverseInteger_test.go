@@ -1,4 +1,4 @@
-// package main_test
+// package reverseInteger_test
 
 // import (
 // 	. "github.com/dbgoytia/algorithms"

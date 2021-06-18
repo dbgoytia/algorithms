@@ -1,4 +1,4 @@
-package main
+package reverseInteger
 
 // func main() {
 // 	fmt.Println("hello from Go!")
