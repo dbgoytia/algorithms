@@ -1,20 +1,20 @@
-package main_test
+// package main_test
 
-import (
-	. "github.com/dbgoytia/algorithms"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
-)
+// import (
+// 	. "github.com/dbgoytia/algorithms"
+// 	. "github.com/onsi/ginkgo"
+// 	. "github.com/onsi/gomega"
+// )
 
-var _ = Describe("ReverseInteger", func() {
+// var _ = Describe("ReverseInteger", func() {
 
-	Describe("Add", func() {
+// 	Describe("Add", func() {
 
-		It("adds two numbers", func() {
-			sum := Add(2, 3)
-			Expect(sum).To(Equal(5))
-		})
+// 		It("adds two numbers", func() {
+// 			sum := Add(2, 3)
+// 			Expect(sum).To(Equal(5))
+// 		})
 
-	})
+// 	})
 
-})
+// })
