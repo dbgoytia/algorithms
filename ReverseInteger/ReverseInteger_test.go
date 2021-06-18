@@ -1,7 +1,7 @@
 package main_test
 
 import (
-	. "github.com/dbgoytia/algorithms/ReverseInteger"
+	. "github.com/dbgoytia/algorithms"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

@@ -1,4 +1,4 @@
-module go-training/algorithms/ReverseInteger
+module github.com/dbgoytia/algorithms
 
 go 1.16
 
