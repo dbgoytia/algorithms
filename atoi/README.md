@@ -1,3 +1,22 @@
+## Problem statement
+
+Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
+	
+The algorithm should be as follows:
+
+    1. Read in, and ignore any leading whitespace.
+    
+    2. Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is either a positive or a negative number. Assume postive if neither is present.
+
+    3. Read in next characters until the next non-digit character or end of the input is reached. The rest of the string is ignored.
+
+    4. Convert these digits into an integer (i.e. "123" -> 123, "0032" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).
+
+    5. If it's out of the 32-bit signed integer range (integer overflow), then clamp the integer so that it remains in the range.
+
+    6. Return the integer as final result
+
+
 This self made Atoi function was a great place to learn about Ascii and unicode in general. For example, did you know that a string is not a slice of runes, but rather a slice of bytes? Interestign huh? That means you can't safely convert each of the bytes to integer as you may encounter some weird characters, like a Kanji 字, leaving some weird results in the output.
 
 Instead I found that the preferred and best approach is to first convert the string (or slice fo bytes) to a slice of runes, to get the ASCII or Unicode value of each of the pieces. Then, you need to convert to int.
