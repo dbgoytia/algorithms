@@ -1,11 +1,12 @@
-## Problem statement
+Problem statement
+---------------
 
 Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
 	
 The algorithm should be as follows:
 
     1. Read in, and ignore any leading whitespace.
-    
+
     2. Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is either a positive or a negative number. Assume postive if neither is present.
 
     3. Read in next characters until the next non-digit character or end of the input is reached. The rest of the string is ignored.
