@@ -11,13 +11,13 @@ var _ = Describe("Atoi package", func() {
 
 	Describe("Atoi", func() {
 		It("Converts a string to a number", func() {
-			Expect(atoi.MyAtoi("32")).To(Equal(32))
+			Expect(atoi.MyAtoi("32")).To(Equal(int32(32)))
 		})
 	})
 
 	Describe("Atoi", func() {
 		It("Respects negative numbers", func() {
-			Expect(atoi.MyAtoi("-32")).To(Equal(-32))
+			Expect(atoi.MyAtoi("-32")).To(Equal(int32(-32)))
 		})
 	})
 
