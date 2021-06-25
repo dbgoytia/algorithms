@@ -1,5 +1,3 @@
-For those who is wondering how int(r-'0') even work, short explanation: "subtracting the value of rune '0' from any rune '0' through '9' will give you an integer 0 through 9". Resulting type after subtraction r-'0' will be int32 (base type of runes), that is why if you need int type - you will also need int() conversion
-
 This self made Atoi function was a great place to learn about Ascii and unicode in general. For example, did you know that a string is not a slice of runes, but rather a slice of bytes? Interestign huh? That means you can't safely convert each of the bytes to integer as you may encounter some weird characters, like a Kanji 字, leaving some weird results in the output.
 
 Instead I found that the preferred and best approach is to first convert the string (or slice fo bytes) to a slice of runes, to get the ASCII or Unicode value of each of the pieces. Then, you need to convert to int.
@@ -30,6 +28,8 @@ int32 ( 51 - '0' ) would be ( 51 - 48 ) resulting in the integer value of 3.
 ```
 
 Of course, this logic will be simply broken if you go past 58, or anything previous to 48 (ascii), so the algorithm of Atoi needs to be able to handle this.
+
+
 
 References:
 https://blog.golang.org/strings
