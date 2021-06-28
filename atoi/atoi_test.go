@@ -23,7 +23,7 @@ var _ = Describe("Atoi package", func() {
 
 	Describe("Atoi", func() {
 		It("Doesn't care about leading whitespaces", func() {
-			Expect(atoi.MyAtoi("      -32")).To(Equal(-32))
+			Expect(atoi.MyAtoi("      -32")).To(Equal(int32(-32)))
 		})
 	})
 
