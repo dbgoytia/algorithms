@@ -53,97 +53,7 @@ Of course, this logic will be simply broken if you go past 58, or anything previ
 
 Results so far:
 ```
-Running Suite: Atoi Suite
-=========================
-Random Seed: 1624629142
-Will run 6 of 6 specs
-
-•
-------------------------------
-• Failure [0.000 seconds]
-Atoi package
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:10
-  Atoi
-  /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:18
-    Respects negative numbers [It]
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:19
-
-    Expected
-        <int32>: -268
-    to equal
-        <int32>: -32
-
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:20
-------------------------------
-• Failure [0.000 seconds]
-Atoi package
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:10
-  Atoi
-  /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:24
-    Doesn't care about leading whitespaces [It]
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:25
-
-    Expected
-        <int32>: -1777776268
-    to equal
-        <int>: -32
-
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:26
-------------------------------
-• Failure [0.000 seconds]
-Atoi package
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:10
-  Atoi
-  /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:30
-    Reads until first non-digit [It]
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:31
-
-    Expected
-        <int32>: 316595355
-    to equal
-        <int>: 12341
-
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:32
-------------------------------
-• Failure [0.000 seconds]
-Atoi package
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:10
-  Atoi
-  /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:36
-    Reads until first non-digit [It]
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:37
-
-    Expected
-        <int32>: -669916427
-    to equal
-        <int>: 0
-
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:38
-------------------------------
-• Failure [0.000 seconds]
-Atoi package
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:10
-  Atoi
-  /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:42
-    Treats all non-digits as zero. [It]
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:43
-
-    Expected
-        <int32>: -2111109276
-    to equal
-        <int>: 0
-
-    /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:44
-------------------------------
-
-
-Summarizing 5 Failures:
-
-[Fail] Atoi package Atoi [It] Respects negative numbers 
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:20
-
-[Fail] Atoi package Atoi [It] Doesn't care about leading whitespaces 
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:26
+Summarizing 3 Failures:
 
 [Fail] Atoi package Atoi [It] Reads until first non-digit 
 /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:32
@@ -154,12 +64,12 @@ Summarizing 5 Failures:
 [Fail] Atoi package Atoi [It] Treats all non-digits as zero. 
 /Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:44
 
-Ran 6 of 6 Specs in 0.002 seconds
-FAIL! -- 1 Passed | 5 Failed | 0 Pending | 0 Skipped
+Ran 6 of 6 Specs in 0.001 seconds
+FAIL! -- 3 Passed | 3 Failed | 0 Pending | 0 Skipped
 --- FAIL: TestAtoi (0.00s)
 FAIL
 
-Ginkgo ran 1 suite in 7.470324547s
+Ginkgo ran 1 suite in 2.427377905s
 Test Suite Failed
 ```
 
