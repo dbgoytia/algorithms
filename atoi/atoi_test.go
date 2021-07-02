@@ -59,4 +59,10 @@ var _ = Describe("Atoi package", func() {
 		})
 	})
 
+	Describe("Atoi", func() {
+		It("Ignores all digits after a dot", func() {
+			Expect(atoi.MyAtoi("3.14159")).To(Equal(3))
+		})
+	})
+
 })
