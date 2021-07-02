@@ -29,19 +29,19 @@ var _ = Describe("Atoi package", func() {
 
 	Describe("Atoi", func() {
 		It("Reads until first non-digit", func() {
-			Expect(atoi.MyAtoi("12341 with words")).To(Equal(12341))
+			Expect(atoi.MyAtoi("12341 with words")).To(Equal(int32(12341)))
 		})
 	})
 
 	Describe("Atoi", func() {
-		It("Reads until first non-digit", func() {
-			Expect(atoi.MyAtoi("with words 12341")).To(Equal(0))
+		It("If it starts with non-digits, returns a zero", func() {
+			Expect(atoi.MyAtoi("with words 12341")).To(Equal(int32((0))))
 		})
 	})
 
 	Describe("Atoi", func() {
 		It("Treats all non-digits as zero.", func() {
-			Expect(atoi.MyAtoi("only non-digits.")).To(Equal(0))
+			Expect(atoi.MyAtoi("only non-digits.")).To(Equal(int32(0)))
 		})
 	})
 

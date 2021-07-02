@@ -1,9 +1,5 @@
 package atoi
 
-import (
-	"fmt"
-)
-
 func MyAtoi(s string) int32 {
 
 	var res int32 = 0
@@ -14,14 +10,15 @@ func MyAtoi(s string) int32 {
 	// Record starting point of the conversion
 	var start int = 0
 
-	for i := start; i < len(runes); i++ {
-		// Ignore all leading whitespaces
-		if runes[i] == 32 { // 12341 with words -> This is a contradiction to this use case, you have two spaces, so it's going to start in position two instead of only ignoring leading whitespaces
-			start++
+	// Ignore all leading whitespaces until first non-whitespace
+	for runes[start] == 32 {
+		if start > len(runes) {
+			return 0
 		}
+		start++
 	}
 
-	// Check if there's a signature at the beginning of the number
+	// Check if there's a signature at the beginning of the number and set it
 	signature := '+'
 	var foundSignature bool = false
 	if runes[start] == 45 {
@@ -30,13 +27,17 @@ func MyAtoi(s string) int32 {
 	} else if runes[start] == 43 {
 		foundSignature = true
 	}
-
 	if foundSignature {
 		start++
 	}
+
+	// Check if first non-whitespace is a non-digit character
+	if runes[start] < 48 || runes[start] > 58 {
+		return int32(0)
+	}
+
 	for i := start; i < len(runes); i++ {
 		if runes[i] == 32 {
-			fmt.Println("found whitespace!")
 			break
 		}
 		if runes[i] > 48 || runes[i] < 57 {

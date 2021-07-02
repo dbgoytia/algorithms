@@ -53,24 +53,18 @@ Of course, this logic will be simply broken if you go past 58, or anything previ
 
 Results so far:
 ```
-Summarizing 3 Failures:
+Running Suite: Atoi Suite
+=========================
+Random Seed: 1625244751
+Will run 6 of 6 specs
 
-[Fail] Atoi package Atoi [It] Reads until first non-digit 
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:32
+••••••
+Ran 6 of 6 Specs in 0.000 seconds
+SUCCESS! -- 6 Passed | 0 Failed | 0 Pending | 0 Skipped
+PASS
 
-[Fail] Atoi package Atoi [It] Reads until first non-digit 
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:38
-
-[Fail] Atoi package Atoi [It] Treats all non-digits as zero. 
-/Users/diego_canizales/go/src/github.com/dbgoytia/algorithms/atoi/atoi_test.go:44
-
-Ran 6 of 6 Specs in 0.001 seconds
-FAIL! -- 3 Passed | 3 Failed | 0 Pending | 0 Skipped
---- FAIL: TestAtoi (0.00s)
-FAIL
-
-Ginkgo ran 1 suite in 2.427377905s
-Test Suite Failed
+Ginkgo ran 1 suite in 1.876301761s
+Test Suite Passed
 ```
 
 
