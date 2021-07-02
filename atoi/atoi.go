@@ -6,6 +6,11 @@ import (
 
 func MyAtoi(s string) int {
 
+	// If length of string is zero, return zero
+	if len(s) == 0 {
+		return 0
+	}
+
 	var res = 0
 	var res64 int64 = 0
 

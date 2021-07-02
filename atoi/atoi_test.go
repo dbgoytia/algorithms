@@ -65,4 +65,10 @@ var _ = Describe("Atoi package", func() {
 		})
 	})
 
+	Describe("Atoi", func() {
+		It("Return a zero when length of string is zero", func() {
+			Expect(atoi.MyAtoi("")).To(Equal(0))
+		})
+	})
+
 })
