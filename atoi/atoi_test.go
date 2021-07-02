@@ -71,4 +71,21 @@ var _ = Describe("Atoi package", func() {
 		})
 	})
 
+	Describe("Atoi", func() {
+		It("Returns zero when there's only a signature in the string", func() {
+			Expect(atoi.MyAtoi("+")).To(Equal(0))
+		})
+	})
+
+	Describe("Atoi", func() {
+		It("Ignores all digits after intermediate signatuers", func() {
+			Expect(atoi.MyAtoi("00000-42a1234")).To(Equal(0))
+		})
+	})
+
+	Describe("Atoi", func() {
+		It("Ignore strings that are only whitespaces", func() {
+			Expect(atoi.MyAtoi("  ")).To(Equal(0))
+		})
+	})
 })

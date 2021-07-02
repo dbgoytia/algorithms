@@ -11,6 +11,13 @@ func MyAtoi(s string) int {
 		return 0
 	}
 
+	if len(s) == 1 {
+		runes := []rune(s)
+		if runes[0] == '+' || runes[0] == '-' || runes[0] == ' ' {
+			return 0
+		}
+	}
+
 	var res = 0
 	var res64 int64 = 0
 
@@ -22,7 +29,7 @@ func MyAtoi(s string) int {
 
 	// Ignore all leading whitespaces until first non-whitespace
 	for runes[start] == 32 {
-		if start > len(runes) {
+		if start+1 >= len(runes) {
 			return 0
 		}
 		start++
@@ -54,6 +61,10 @@ func MyAtoi(s string) int {
 		}
 		// Ignore all characters after a dot
 		if runes[i] == 46 {
+			break
+		}
+		// Ignore all digits after intermediate signatures
+		if runes[i] == '+' || runes[i] == '-' {
 			break
 		}
 
