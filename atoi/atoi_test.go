@@ -88,4 +88,10 @@ var _ = Describe("Atoi package", func() {
 			Expect(atoi.MyAtoi("  ")).To(Equal(0))
 		})
 	})
+
+	Describe("Atoi", func() {
+		It("Ignore all digits after first non-digit character", func() {
+			Expect(atoi.MyAtoi("-0012a42")).To(Equal(-12))
+		})
+	})
 })
