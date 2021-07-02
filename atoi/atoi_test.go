@@ -45,4 +45,16 @@ var _ = Describe("Atoi package", func() {
 		})
 	})
 
+	Describe("Atoi", func() {
+		It("Knows how to deal with integer overflows (clamp the integer) (negative values)", func() {
+			Expect(atoi.MyAtoi("-91283472332")).To(Equal(int32(-2147483647)))
+		})
+	})
+
+	Describe("Atoi", func() {
+		It("Knows how to deal with integer overflows (clamp the integer) (positive values)", func() {
+			Expect(atoi.MyAtoi("91283472332")).To(Equal(int32(2147483647)))
+		})
+	})
+
 })
