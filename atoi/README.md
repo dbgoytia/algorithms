@@ -55,15 +55,15 @@ Results so far:
 ```
 Running Suite: Atoi Suite
 =========================
-Random Seed: 1625244751
-Will run 6 of 6 specs
+Random Seed: 1625253485
+Will run 8 of 8 specs
 
-••••••
-Ran 6 of 6 Specs in 0.000 seconds
-SUCCESS! -- 6 Passed | 0 Failed | 0 Pending | 0 Skipped
+••••••••
+Ran 8 of 8 Specs in 0.000 seconds
+SUCCESS! -- 8 Passed | 0 Failed | 0 Pending | 0 Skipped
 PASS
 
-Ginkgo ran 1 suite in 1.876301761s
+Ginkgo ran 1 suite in 1.741739362s
 Test Suite Passed
 ```
 

@@ -1,7 +1,6 @@
 package atoi
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -42,7 +41,6 @@ func MyAtoi(s string) int {
 		return 0
 	}
 
-	fmt.Println(math.MinInt32)
 	for i := start; i < len(runes); i++ {
 		if runes[i] == 32 {
 			break
