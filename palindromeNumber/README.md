@@ -26,6 +26,12 @@ Ginkgo ran 1 suite in 2.047686548s
 Test Suite Passed
 ```
 
+```
+Runtime: 16 ms, faster than 62.36% of Go online submissions for Palindrome Number.
+Memory Usage: 5.1 MB, less than 89.03% of Go online submissions for Palindrome Number.
+
+```
+
 
 
 References:

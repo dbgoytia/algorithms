@@ -67,7 +67,5 @@ Ginkgo ran 1 suite in 1.398774836s
 Test Suite Passed
 ```
 
-
-
 References:
 https://blog.golang.org/strings
