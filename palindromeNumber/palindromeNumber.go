@@ -1,7 +1,6 @@
 package palindromeNumber
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -23,7 +22,6 @@ func isPalindrome(x int) bool {
 	tmp = x
 	for tmp > 0 {
 		r += (tmp % 10) * multiplier
-		fmt.Println(r)
 		multiplier /= 10
 		tmp = tmp / 10
 	}
