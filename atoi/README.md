@@ -67,5 +67,10 @@ Ginkgo ran 1 suite in 1.398774836s
 Test Suite Passed
 ```
 
+```
+Runtime: 0 ms, faster than 100.00% of Go online submissions for String to Integer (atoi).
+Memory Usage: 2.3 MB, less than 100.00% of Go online submissions for String to Integer (atoi).
+```
+
 References:
 https://blog.golang.org/strings
