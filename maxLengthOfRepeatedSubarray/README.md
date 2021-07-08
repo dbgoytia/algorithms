@@ -20,7 +20,18 @@ Output: 5
 
 Results so far:
 ```
+Running Suite: MaxLengthOfRepeatedSubarray Suite
+================================================
+Random Seed: 1625774163
+Will run 2 of 2 specs
 
+••
+Ran 2 of 2 Specs in 0.000 seconds
+SUCCESS! -- 2 Passed | 0 Failed | 0 Pending | 0 Skipped
+PASS
+
+Ginkgo ran 1 suite in 2.710928185s
+Test Suite Passed
 ```
 
 ```
