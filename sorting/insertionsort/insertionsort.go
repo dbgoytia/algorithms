@@ -1,5 +1,5 @@
 package insertionsort
 
-func insertionsort(x int) bool {
+func insertionsort(x []int) []int {
 	return true
 }

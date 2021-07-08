@@ -1,17 +1,21 @@
-package insertionsort_test
+package insertionsort
 
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	. "github.com/dbgoytia/algorithms/sorting/insertionsort"
 )
 
-var _ = Describe("InsertionSort", func() {
+const testName string = "Insertion sort "
 
-	Describe("Insertion Sort", func() {
-		It("returns a test", func() {
-			Expect(insertionsort(2)).To(Equal(true))
+var _ = Describe(testName, func() {
+
+	Describe(testName, func() {
+		It("Sample", func() {
+
+			input := [...]int{5, 2, 4, 6, 1, 3}
+			output := [...]int{1, 2, 3, 4, 5, 6}
+
+			Expect(insertionsort(input)).To(Equal(output))
 		})
 	})
 })
