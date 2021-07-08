@@ -24,11 +24,12 @@ func findLength_helper(nums1 []int, nums2 []int) int {
 		// If the number exists on nums2, process
 		if len(positions) != 0 {
 
-			for pos := range positions {
+			for _, pos := range positions {
 				// Start at the position of i
 				x := i
 				y := pos
 				total := 0
+
 				for nums1[x] == nums2[y] {
 					total++
 
@@ -42,6 +43,10 @@ func findLength_helper(nums1 []int, nums2 []int) int {
 
 					x++
 					y++
+				}
+				// We still have one appearance for single appearances
+				if total == 0 {
+					total++
 				}
 				if total > max {
 					max = total
@@ -59,7 +64,7 @@ func getPosition(num int, nums []int) []int {
 	res := []int{}
 	for i := 0; i < len(nums); i++ {
 		if nums[i] == num {
-			res = append(res, nums[i])
+			res = append(res, i)
 		}
 	}
 	return res

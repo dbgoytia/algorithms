@@ -53,4 +53,26 @@ var _ = Describe("MaxLengthOfRepeatedSubarray", func() {
 		})
 	})
 
+	Describe("Max length", func() {
+		It("Detects a single digit repetition", func() {
+
+			nums1 := []int{5, 14, 53, 80, 48}
+			nums2 := []int{50, 47, 3, 80, 83}
+			res := maxLengthOfRepeatedSubarray.FindLength(nums1, nums2)
+
+			Expect(res).To(Equal(1))
+		})
+	})
+
+	Describe("Max length", func() {
+		It("Detects a single digit repetition", func() {
+
+			nums1 := []int{83, 79, 64, 67, 90, 29, 8, 11, 70, 19}
+			nums2 := []int{74, 66, 27, 16, 22, 79, 64, 67, 90, 29}
+			res := maxLengthOfRepeatedSubarray.FindLength(nums1, nums2)
+
+			Expect(res).To(Equal(5))
+		})
+	})
+
 })
