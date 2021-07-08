@@ -2,9 +2,22 @@ package maxLengthOfRepeatedSubarray
 
 func FindLength(nums1 []int, nums2 []int) int {
 
+	res1 := findLength_helper(nums1, nums2)
+	res2 := findLength_helper(nums2, nums1)
+
+	if res1 > res2 {
+		return res1
+	}
+	return res2
+
+}
+
+func findLength_helper(nums1 []int, nums2 []int) int {
+
 	var max int = 0
 
 	for i := 0; i < len(nums1); i++ {
+
 		// Get the position of nums1[i] in nums2, if exists result will be different than -1
 		pos := getPosition(nums1[i], nums2)
 

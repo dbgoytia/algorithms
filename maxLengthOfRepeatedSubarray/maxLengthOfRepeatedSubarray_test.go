@@ -31,4 +31,15 @@ var _ = Describe("MaxLengthOfRepeatedSubarray", func() {
 		})
 	})
 
+	Describe("Max length", func() {
+		It("Compares longest repeated in both of the permutations available", func() {
+
+			nums1 := []int{0, 0, 0, 0, 0, 0, 1, 0, 0, 0}
+			nums2 := []int{0, 0, 0, 0, 0, 0, 0, 1, 0, 0}
+			res := maxLengthOfRepeatedSubarray.FindLength(nums1, nums2)
+
+			Expect(res).To(Equal(9))
+		})
+	})
+
 })
