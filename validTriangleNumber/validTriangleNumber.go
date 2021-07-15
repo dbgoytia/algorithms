@@ -1,5 +1,5 @@
 package validTriangleNumber
 
-func someStuff() int {
+func SomeStuff() int {
 	return 0
 }
