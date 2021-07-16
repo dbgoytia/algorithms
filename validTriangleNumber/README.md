@@ -36,3 +36,23 @@ Available triangles:
 
 Answer: 4
 ```
+
+Results so far:
+
+```
+Running Suite: ValidTriangleNumber Suite
+========================================
+Random Seed: 1626394721
+Will run 3 of 3 specs
+
+•••
+Ran 3 of 3 Specs in 0.002 seconds
+SUCCESS! -- 3 Passed | 0 Failed | 0 Pending | 0 Skipped
+PASS
+
+Ginkgo ran 1 suite in 2.266416526s
+Test Suite Passed
+
+Leetcode:
+Beats 100% of golang submissions
+```
