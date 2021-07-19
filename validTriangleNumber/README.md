@@ -1,7 +1,7 @@
 Problem statement
 ==================
 
-Given an integer array *nums*, return the number of triplets chosen from the array that can make triangles if we take them as side lengths of a triangle. Approach is to sort the array, start from position three. We consider that this number is the longest possible side of the triangle. The other sum of the other two numbers has to be greater than this.
+Given an integer array *nums*, return the number of triplets chosen from the array that can make triangles if we take them as side lengths of a triangle. 
 
 See the Triangle Inequality Theorem:
 
