@@ -1,4 +1,4 @@
-package validparenthesis_test
+package validParenthesis_test
 
 import (
 	"testing"
@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestValidParenthesis(t *testing.T) {
+func TestValidparenthesis(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "ValidParenthesis Suite")
+	RunSpecs(t, "Validparenthesis Suite")
 }

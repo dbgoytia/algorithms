@@ -1,21 +1,12 @@
-package validparenthesis_test
+package validParenthesis_test
 
 import (
-	"github.com/dbgoytia/algorithms/leetcode/validparenthesis"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
+	"github.com/dbgoytia/algorithms/validparenthesis"
 )
 
-var _ = Describe("ValidParenthesis", func() {
-
-	Context("when having same parenthesis", func() {
-
-		Context("the parenthesis validator", func() {
-			It("should check if every parenthesis closes with the same kind", func() {
-				Expect(validparenthesis.Whatever()).Should(Equal(0))
-			})
-		})
-
-	})
+var _ = Describe("Validparenthesis", func() {
 
 })
