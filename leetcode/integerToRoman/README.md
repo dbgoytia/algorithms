@@ -23,3 +23,8 @@ Ginkgo ran 1 suite in 2.285331239s
 Test Suite Passed
 
 ```
+
+```
+Runtime: 0 ms, faster than 100.00% of Go online submissions for Integer to Roman.
+Memory Usage: 3.4 MB, less than 63.30% of Go online submissions for Integer to Roman.
+```
