@@ -58,8 +58,6 @@ var _ = Describe("001InsertIntoBinaryTree", func() {
 	It("Test scenario 3:", func() {
 		// Expected tree: (just the root)
 		//       5
-		root := insertToTree.TreeNode{}
-		insertToTree.InsertIntoBST(&root, 5)
-		Expect(insertToTree.LevelOrder(&root)).To(Equal([]int{5}))
+		Expect(insertToTree.LevelOrder(insertToTree.InsertIntoBST(nil, 5))).To(Equal([]int{5}))
 	})
 })
