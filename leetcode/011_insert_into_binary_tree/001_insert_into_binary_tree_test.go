@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	insertToTree "github.com/dbgoytia/algorithms/001_insert_into_binary_tree"
+	insertToTree "github.com/dbgoytia/algorithms/011_insert_into_binary_tree"
 )
 
 var _ = Describe("001InsertIntoBinaryTree", func() {

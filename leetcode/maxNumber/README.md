@@ -1,1 +1,0 @@
-Find the max number in a list that increases and then decreases.

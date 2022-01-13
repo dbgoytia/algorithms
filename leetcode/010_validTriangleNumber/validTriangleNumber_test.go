@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	. "github.com/dbgoytia/algorithms/validTriangleNumber"
+	. "github.com/dbgoytia/algorithms/010_validTriangleNumber"
 )
 
 var _ = Describe("ValidTriangleNumber", func() {

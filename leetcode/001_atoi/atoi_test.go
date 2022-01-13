@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/dbgoytia/algorithms/atoi"
+	atoi "github.com/dbgoytia/algorithms/001_atoi"
 )
 
 var _ = Describe("Atoi package", func() {

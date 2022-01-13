@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	. "github.com/dbgoytia/algorithms/reverseInteger"
+	. "github.com/dbgoytia/algorithms/007_reverseInteger"
 )
 
 var _ = Describe("ReverseInteger", func() {

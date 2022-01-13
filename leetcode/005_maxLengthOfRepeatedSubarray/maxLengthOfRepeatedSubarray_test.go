@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/dbgoytia/algorithms/maxLengthOfRepeatedSubarray"
+	maxLengthOfRepeatedSubarray "github.com/dbgoytia/algorithms/005_maxLengthOfRepeatedSubarray"
 )
 
 var _ = Describe("MaxLengthOfRepeatedSubarray", func() {

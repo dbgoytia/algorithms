@@ -1,7 +1,7 @@
 package validParenthesis_test
 
 import (
-	"github.com/dbgoytia/algorithms/validParenthesis"
+	validParenthesis "github.com/dbgoytia/algorithms/009_validParenthesis"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

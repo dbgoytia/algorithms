@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/dbgoytia/algorithms/integerToRoman"
+	integerToRoman "github.com/dbgoytia/algorithms/003_integerToRoman"
 )
 
 var _ = Describe("IntegerToRoman", func() {
