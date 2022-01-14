@@ -1,4 +1,5 @@
 # std lib
+from unittest.mock import patch
 
 # third party modules
 
@@ -73,6 +74,17 @@ def test__brew_coffee():
         "money": 0
     }
     assert ui.brew_coffee("latte", resources_mock, menu_mock ) == expected_result
+
+
+@patch('builtins.input', lambda *args: '1 quarter')
+def test__purchase_drink_fail():
+    assert ui.purchase_drink("latte") == "Sorry that's not enough money. Money refunded."
+
+
+@patch('builtins.input', lambda *args: '20 quarter')
+def test__purchase_drink_success():
+    assert ui.purchase_drink("latte") == "Here's $0.5 dollars in change."
+
 
 
 

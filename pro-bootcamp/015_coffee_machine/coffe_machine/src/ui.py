@@ -106,24 +106,32 @@ def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
     return resources
 
 
-def purchase_drink(drink: str):
+def purchase_drink(drink: str) -> str:
     """
     Asks the user to insert coins into the machine. Checks if there's enough money
     and if there is so, returns the required change. Otherwise, refunds money.
 
     Args:
         drink: A drink from the MENU
+
+    Returns:
+        (str): A string containing either a refund or the change.
     """
     inserted_coins = input("Enter your coins:")
     total = total_coins(inserted_coins)
     if total < MENU.get(drink).get('cost'):
-        print("Sorry that's not enough money. Money refunded.")
+        message = "Sorry that's not enough money. Money refunded."
+        print(message)
+        return message
     else:
         change = calculate_change(drink, total)
-        print(f"Here's ${round(change, 2)} dollars in change.")
         total = total - change
         cash_money(total)
         brew_coffee(drink)
+        message = f"Here's ${round(change, 2)} dollars in change."
+        print(message)
+        return message
+
 
 
 def calculate_change(drink: str, coins: str) -> float:
