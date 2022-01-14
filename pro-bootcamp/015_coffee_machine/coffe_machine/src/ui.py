@@ -24,7 +24,7 @@ MENU = {
     }
 }
 
-resources = {
+RESOURCES = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
@@ -32,7 +32,7 @@ resources = {
 }
 
 
-def formatted_menu(menu:dict = None) -> str:
+def formatted_menu(menu: dict = None) -> str:
     """
     Returns the available drinks in the menu for the coffee machine
 
@@ -81,15 +81,29 @@ def user_prompt() -> str:
     user_prompt()
 
 
-def brew_coffee(drink: str):
+def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
     """
     Reduces the resources required from brewing a drink
 
     Args:
+        menu:
+        resources:
         drink: A drink from the MENU
+
+    Returns:
+        (dict) A dictionary containing the remaining resources for  the coffee machine
     """
-    for ingredient in MENU.get(drink).get('ingredients'):
-        resources[ingredient] = resources[ingredient] - MENU.get(drink).get('ingredients').get(ingredient)
+
+    if resources is None:
+        resources = RESOURCES
+
+    if menu is None:
+        menu = MENU
+
+    for ingredient in menu.get(drink).get('ingredients'):
+        resources[ingredient] = resources[ingredient] - menu.get(drink).get('ingredients').get(ingredient)
+
+    return resources
 
 
 def purchase_drink(drink: str):
@@ -128,7 +142,7 @@ def calculate_change(drink: str, coins: str) -> float:
 
 
 def cash_money(coins: str):
-    resources["money"] += coins
+    RESOURCES["money"] += coins
     return
 
 
@@ -166,7 +180,7 @@ def check_resources_sufficient(drink: str) -> bool:
     """
     ingredients = MENU.get(drink).get('ingredients')
     for ingredient in ingredients:
-        if ingredients.get(ingredient) > resources.get(ingredient):
+        if ingredients.get(ingredient) > RESOURCES.get(ingredient):
             print(f"Sorry there is not enough {ingredient}")
             return False
     return True
@@ -176,10 +190,10 @@ def get_report():
     """
     Prints a formatted report of the current machine status
     """
-    print(f"Water: {resources.get('water')}ml")
-    print(f"Milk: {resources.get('milk')}ml")
-    print(f"Coffee: {resources.get('coffee')}g")
-    print(f"Money: ${resources.get('money')}")
+    print(f"Water: {RESOURCES.get('water')}ml")
+    print(f"Milk: {RESOURCES.get('milk')}ml")
+    print(f"Coffee: {RESOURCES.get('coffee')}g")
+    print(f"Money: ${RESOURCES.get('money')}")
     return
 
 
