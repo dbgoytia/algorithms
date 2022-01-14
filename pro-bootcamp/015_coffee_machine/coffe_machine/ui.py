@@ -31,6 +31,7 @@ resources = {
     "money": 0,
 }
 
+
 def formatted_menu() -> str:
     """
     Returns the available drinks in the menu for the coffee machine
@@ -60,31 +61,91 @@ def user_prompt() -> str:
 
     if user_input == "report":
         get_report()
+        user_prompt()
 
     if user_input not in MENU:
         print("we can't do that")
-        exit()
+        user_prompt()
 
     if not check_resources_sufficient(user_input):
-        exit()
+        user_prompt()
 
-    insert_coins()
+    purchase_drink(user_input)
+
+    user_prompt()
 
 
-def insert_coins():
-    {
+def brew_coffee(drink: str):
+    """
+    Reduces the resources required from brewing a drink
+
+    Args:
+        drink: A drink from the MENU
+    """
+    for ingredient in MENU.get(drink).get('ingredients'):
+        resources[ingredient] = resources[ingredient] - MENU.get(drink).get('ingredients').get(ingredient)
+
+
+def purchase_drink(drink: str):
+    """
+    Asks the user to insert coins into the machine. Checks if there's enough money
+    and if there is so, returns the required change. Otherwise, refunds money.
+
+    Args:
+        drink: A drink from the MENU
+    """
+    inserted_coins = input("Enter your coins:")
+    total = total_coins(inserted_coins)
+    if total < MENU.get(drink).get('cost'):
+        print("Sorry that's not enough money. Money refunded.")
+    else:
+        change = calculate_change(drink, total)
+        print(f"Here's ${round(change, 2)} dollars in change.")
+        total = total - change
+        cash_money(total)
+        brew_coffee(drink)
+
+
+def calculate_change(drink: str, coins: str) -> float:
+    """
+    Calculates the money change for the client.
+
+    Args:
+        drink: A drink from the menu
+        coins: Total money for the operation
+
+    Returns:
+        (float): Total change for the client
+
+    """
+    return coins - MENU.get(drink).get('cost')
+
+
+def cash_money(coins: str):
+    resources["money"] += coins
+    return
+
+
+def total_coins(coins: str) -> float:
+    """
+    Calculates the total based on the input from the user
+
+    :return:
+    (float) total value for the coins inserted in the machine
+    """
+    coin_values = {
         "pennies": 0.01,
         "nickel": 0.05,
-        "dimes" : 0.10,
+        "dimes": 0.10,
         "quarter": 0.15
     }
-    coins = input("Enter your coins:")
-    coins = coins.split(',')
+    coins = coins.split(', ')
+    total = 0
     for val in coins:
-        total = (val.split(' '))
-        print(total)
-
-
+        total_per_coin = val.split(' ')
+        subtotal = float(total_per_coin[0]) * coin_values.get(total_per_coin[1])
+        total += subtotal
+    return round(total, 2)
 
 
 def check_resources_sufficient(drink: str) -> bool:
@@ -98,8 +159,6 @@ def check_resources_sufficient(drink: str) -> bool:
     (bool) Wether it's possible to brew the drink
     """
     ingredients = MENU.get(drink).get('ingredients')
-    print(ingredients)
-
     for ingredient in ingredients:
         if ingredients.get(ingredient) > resources.get(ingredient):
             print(f"Sorry there is not enough {ingredient}")
@@ -115,6 +174,7 @@ def get_report():
     print(f"Milk: {resources.get('milk')}ml")
     print(f"Coffee: {resources.get('coffee')}g")
     print(f"Money: ${resources.get('money')}")
+    return
 
 
 def turn_off():
@@ -123,6 +183,3 @@ def turn_off():
     Code ends execution when this happens
     """
     exit()
-
-
-
