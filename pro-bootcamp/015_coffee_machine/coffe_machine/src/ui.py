@@ -32,15 +32,21 @@ resources = {
 }
 
 
-def formatted_menu() -> str:
+def formatted_menu(menu:dict = None) -> str:
     """
     Returns the available drinks in the menu for the coffee machine
 
-    :return:
-    (str) a string containing the drinks in the menu in the form of:
-    a/b/c
+    Args:
+        dict: (Optional), if not provided will use environment provided MENU.
+
+    Returns:
+        (str) a string containing the drinks in the menu in the form of:
+        a/b/c
     """
-    drinks = ('/'.join(str(x) for x in MENU))
+    if menu is None:
+        drinks = ('/'.join(str(x) for x in MENU))
+    else:
+        drinks = ('/'.join(str(x) for x in menu))
     return drinks
 
 
