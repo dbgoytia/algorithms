@@ -55,9 +55,9 @@ def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
     Reduces the resources required from brewing a drink
 
     Args:
-        menu:
-        resources:
-        drink: A drink from the MENU
+        menu: A menu to brew the coffee from
+        resources: Resources available to brew a drink
+        drink: A drink from the available menu
 
     Returns:
         (dict) A dictionary containing the remaining resources for  the coffee machine
@@ -77,14 +77,15 @@ def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
 
 def purchase_drink(drink: str, total_money:float) -> bool:
     """
-    Asks the user to insert coins into the machine. Checks if there's enough money
-    and if there is so, returns the required change. Otherwise, refunds money.
+    Checks if there's enough money to purchase a drink.
+    If there is so, returns the required change. Otherwise, refunds money.
 
     Args:
         drink: A drink from the MENU
+        total_money: Total money received from the user as input
 
     Returns:
-        (str): A string containing either a refund or the change.
+        (bool): A bool telling if there transaction was successfull
     """
     if total_money < MENU.get(drink).get('cost'):
         print("Sorry that's not enough money. Money refunded.")
