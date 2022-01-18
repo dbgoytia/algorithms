@@ -117,8 +117,7 @@ def purchase_drink(drink: str) -> str:
     Returns:
         (str): A string containing either a refund or the change.
     """
-    inserted_coins = input("Enter your coins:")
-    total = total_coins(inserted_coins)
+    total = total_coins()
     if total < MENU.get(drink).get('cost'):
         message = "Sorry that's not enough money. Money refunded."
         print(message)
@@ -154,25 +153,26 @@ def cash_money(coins: str):
     return
 
 
-def total_coins(coins: str) -> float:
+def total_coins() -> float:
     """
     Calculates the total based on the input from the user
 
     :return:
     (float) total value for the coins inserted in the machine
     """
-    coin_values = {
-        "pennies": 0.01,
-        "nickel": 0.05,
-        "dimes": 0.10,
-        "quarter": 0.15
-    }
-    coins = coins.split(', ')
-    total = 0
-    for val in coins:
-        total_per_coin = val.split(' ')
-        subtotal = float(total_per_coin[0]) * coin_values.get(total_per_coin[1])
-        total += subtotal
+    print("Please insert coins.")
+    quarters = input("how many quarters?: ")
+    dimes = input("how many dimes?: ")
+    nickles = input("how many nickles?: ")
+    pennies = input("how many pennies?: ")
+
+    quarters = int(quarters) * 0.25
+    dimes = int(dimes) * 0.1
+    nickles = int(nickles) * 0.05
+    pennies = int(pennies) * 0.01
+
+    total = quarters + dimes + nickles + pennies
+
     return round(total, 2)
 
 

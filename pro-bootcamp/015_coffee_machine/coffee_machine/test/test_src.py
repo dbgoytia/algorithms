@@ -1,5 +1,5 @@
 # std lib
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 # third party modules
 
@@ -76,15 +76,39 @@ def test__brew_coffee():
     assert ui.brew_coffee("latte", resources_mock, menu_mock ) == expected_result
 
 
-@patch('builtins.input', lambda *args: '1 quarter')
-def test__purchase_drink_fail():
+@patch('src.ui.total_coins')
+def test__purchase_drink_fail(total_coins_mock):
+    total_coins_mock.return_value = 0.5
     assert ui.purchase_drink("latte") == "Sorry that's not enough money. Money refunded."
 
 
-@patch('builtins.input', lambda *args: '20 quarter')
-def test__purchase_drink_success():
-    assert ui.purchase_drink("latte") == "Here's $0.5 dollars in change."
+@patch('src.ui.total_coins')
+def test__purchase_drink_success(total_coins_mock):
+    total_coins_mock.return_value = 80
+    assert ui.purchase_drink("latte") == "Here's $77.5 dollars in change."
 
+
+def test__total_coins():
+    input_mock_quarters = Mock()
+    input_mock_quarters.return_value = 1
+    input_mock_dimes = Mock()
+    input_mock_dimes.return_value = 3
+    input_mock_nickles = Mock()
+    input_mock_nickles.return_value = 2
+    input_mock_pennies = Mock()
+    input_mock_pennies.return_value = 30
+
+    input_mock = Mock()
+
+    input_mock.side_effect = [
+        input_mock_quarters.return_value,
+        input_mock_dimes.return_value,
+        input_mock_nickles.return_value,
+        input_mock_pennies.return_value,
+    ]
+
+    with patch('builtins.input', input_mock) as mock_input:
+        assert ui.total_coins() == 0.95
 
 
 
