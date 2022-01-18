@@ -76,12 +76,27 @@ def test__brew_coffee():
     assert ui.brew_coffee("latte", resources_mock, menu_mock ) == expected_result
 
 
+def test__brew_coffee_wrong_input():
+    assert ui.brew_coffee("not_existent") == {}
+
+
+
 def test__purchase_drink_fail():
     assert ui.purchase_drink("latte", 0.01) == False
 
 
 def test__purchase_drink_success():
     assert ui.purchase_drink("latte", 80) == True
+
+
+# TODO: Raise a better error here
+def test__purchase_drink_unexistent():
+    assert ui.purchase_drink("whatever", 80) == False
+
+
+# TODO: Raise a better error here
+def test__purchase_drink_wrong_input():
+    assert ui.purchase_drink(2, 80) == False
 
 
 def test__total_coins():

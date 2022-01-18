@@ -70,6 +70,10 @@ def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
     if menu is None:
         menu = MENU
 
+    if drink not in menu:
+        # TODO: Raise a better error here
+        return {}
+
     for ingredient in menu.get(drink).get('ingredients'):
         resources[ingredient] = resources[ingredient] - menu.get(drink).get('ingredients').get(ingredient)
 
@@ -88,6 +92,10 @@ def purchase_drink(drink: str, total_money:float) -> bool:
     Returns:
         (bool): A bool telling if there transaction was successfull
     """
+
+    if drink not in MENU:
+        return False
+
     if total_money < MENU.get(drink).get('cost'):
         print("Sorry that's not enough money. Money refunded.")
         return False
