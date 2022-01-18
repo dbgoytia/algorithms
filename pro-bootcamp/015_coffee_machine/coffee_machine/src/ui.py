@@ -50,37 +50,6 @@ def formatted_menu(menu: dict = None) -> str:
     return drinks
 
 
-def user_prompt() -> str:
-    """
-    Prompts the user by asking "What would you like", and displaying
-    the current menu on the terminal
-
-    :return:
-    (str) returns a string containing the user's answer.
-    """
-    # order = input("What would you like (espresso / latte / cappuccino):")
-    menu = formatted_menu()
-    user_input = input(f"What would you like ({menu}):")
-
-    if user_input == "off":
-        turn_off()
-
-    if user_input == "report":
-        get_report()
-        user_prompt()
-
-    if user_input not in MENU:
-        print("we can't do that")
-        user_prompt()
-
-    if not check_resources_sufficient(user_input):
-        user_prompt()
-
-    purchase_drink(user_input)
-
-    user_prompt()
-
-
 def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
     """
     Reduces the resources required from brewing a drink
@@ -106,7 +75,7 @@ def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
     return resources
 
 
-def purchase_drink(drink: str) -> str:
+def purchase_drink(drink: str, total_money:float) -> bool:
     """
     Asks the user to insert coins into the machine. Checks if there's enough money
     and if there is so, returns the required change. Otherwise, refunds money.
@@ -117,20 +86,15 @@ def purchase_drink(drink: str) -> str:
     Returns:
         (str): A string containing either a refund or the change.
     """
-    total = total_coins()
-    if total < MENU.get(drink).get('cost'):
-        message = "Sorry that's not enough money. Money refunded."
-        print(message)
-        return message
+    if total_money < MENU.get(drink).get('cost'):
+        print("Sorry that's not enough money. Money refunded.")
+        return False
     else:
-        change = calculate_change(drink, total)
-        total = total - change
+        change = calculate_change(drink, total_money)
+        total = total_money - change
         cash_money(total)
-        brew_coffee(drink)
-        message = f"Here's ${round(change, 2)} dollars in change."
-        print(message)
-        return message
-
+        print(f"Here's ${round(change, 2)} dollars in change.")
+        return True
 
 
 def calculate_change(drink: str, coins: str) -> float:
@@ -211,3 +175,37 @@ def turn_off():
     Code ends execution when this happens
     """
     exit()
+
+
+def user_prompt() -> str:
+    """
+    Prompts the user by asking "What would you like", and displaying
+    the current menu on the terminal
+
+    :return:
+    (str) returns a string containing the user's answer.
+    """
+    # order = input("What would you like (espresso / latte / cappuccino):")
+    menu = formatted_menu()
+    user_input = input(f"What would you like ({menu}):")
+
+    if user_input == "off":
+        turn_off()
+
+    if user_input == "report":
+        get_report()
+        user_prompt()
+
+    if user_input not in MENU:
+        print("we can't do that")
+        user_prompt()
+
+    if not check_resources_sufficient(user_input):
+        user_prompt()
+
+    total_money = total_coins()
+
+    if purchase_drink(drink=user_input, total_money=total_money):
+        brew_coffee(drink=user_input)
+
+    user_prompt()

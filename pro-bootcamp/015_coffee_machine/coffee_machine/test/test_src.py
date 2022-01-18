@@ -76,16 +76,12 @@ def test__brew_coffee():
     assert ui.brew_coffee("latte", resources_mock, menu_mock ) == expected_result
 
 
-@patch('src.ui.total_coins')
-def test__purchase_drink_fail(total_coins_mock):
-    total_coins_mock.return_value = 0.5
-    assert ui.purchase_drink("latte") == "Sorry that's not enough money. Money refunded."
+def test__purchase_drink_fail():
+    assert ui.purchase_drink("latte", 0.01) == False
 
 
-@patch('src.ui.total_coins')
-def test__purchase_drink_success(total_coins_mock):
-    total_coins_mock.return_value = 80
-    assert ui.purchase_drink("latte") == "Here's $77.5 dollars in change."
+def test__purchase_drink_success():
+    assert ui.purchase_drink("latte", 80) == True
 
 
 def test__total_coins():
