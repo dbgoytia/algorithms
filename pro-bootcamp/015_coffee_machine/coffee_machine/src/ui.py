@@ -178,13 +178,9 @@ def turn_off():
     exit()
 
 
-def user_prompt() -> str:
+def user_prompt():
     """
-    Prompts the user by asking "What would you like", and displaying
-    the current menu on the terminal
-
-    :return:
-    (str) returns a string containing the user's answer.
+    User prompt control loop.
     """
     # order = input("What would you like (espresso / latte / cappuccino):")
     menu = formatted_menu()
