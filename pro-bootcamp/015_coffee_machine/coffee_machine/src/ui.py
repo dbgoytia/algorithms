@@ -52,7 +52,8 @@ def formatted_menu(menu: dict = None) -> str:
 
 def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
     """
-    Reduces the resources required from brewing a drink
+    Brews a given drink from the menu. In the process it updates the resources
+    avialable to the machine reducing the ones that were used to make the drink
 
     Args:
         menu: A menu to brew the coffee from
@@ -77,8 +78,8 @@ def brew_coffee(drink: str, resources: dict = None, menu: dict = None) -> dict:
 
 def purchase_drink(drink: str, total_money:float) -> bool:
     """
-    Checks if there's enough money to purchase a drink.
-    If there is so, returns the required change. Otherwise, refunds money.
+    Checks if there's enough money to purchase a drink. If there is so, returns the 
+    required change. Otherwise, refunds money.
 
     Args:
         drink: A drink from the MENU
