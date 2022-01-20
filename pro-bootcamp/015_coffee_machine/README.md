@@ -4,7 +4,7 @@ Today's assignment is to build a coffee machine <3.
 The program requirements are described under "Coffee machine program requirements."
 
 
-## Usage
+## Usage
 
 * Run the main.py file and answer the questions!
 
