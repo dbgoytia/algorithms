@@ -9,4 +9,6 @@ pokedex.add_rows([
     ["Charmander", "fire"]
 ])
 
+pokedex.align = "l"
+
 print(pokedex)
