@@ -11,13 +11,26 @@ The program requirements are described under "Coffee machine program requirement
 
 ## Usage
 
-* Run the main.py file and answer the questions!
 
-* If you say "report", you'll know how many resources are left on the coffee machine.
+```
 
-* If you say "latte" (or any drink), it will brew it for you.
+❯ python3 main.py
+What would you like? (latte/espresso/cappuccino/): latte
+Please insert coins.
+How many quarters?: 20  
+How many dimes?: 20
+How many nickles?: 20
+How many pennies?: 20
+Here is $5.7 in change.
+Here is your latte ☕️. Enjoy!
+What would you like? (latte/espresso/cappuccino/): report
+Water: 100ml
+Milk: 50ml
+Coffee: 76g
+Money: $2.5
+What would you like? (latte/espresso/cappuccino/): off
 
-* If you say "off", you'll turn off the machine.
+```
 
 ## Disclaimer
 
