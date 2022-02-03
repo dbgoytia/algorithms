@@ -21,6 +21,8 @@ STARTING_POSITIONS = [
     [-240, -50],
     [-240, -100]
 ]
+# Available collors for the user
+COLORS = {'red', 'blue', 'green', 'yellow', 'orange'}
 
 
 # Logging configuration
@@ -44,6 +46,9 @@ def init_user(color: str) -> Turtle:
         Turtle: The main user turtle
 
     """
+    if color not in COLORS:
+        logger.info(f'The color {color} is not available')
+        exit()
     tim = Turtle()
     tim.shape(name=SHAPE)
     tim.color(color)
@@ -64,7 +69,7 @@ def init_challengers(user_color:str) -> list:
         list: A list of turtles to race
     """
     logger.debug(f'User is: {user_color}')
-    colors = {'red', 'blue', 'green', 'yellow', 'pink'}
+    colors = COLORS
     colors.remove(user_color)
     colors_list = list(colors)
     logger.debug(f'Using {colors_list} as the colors for challengers.')
@@ -125,7 +130,8 @@ def is_bet_won(user_bet:str, winner:Turtle) -> bool:
 
 if __name__ == '__main__':
     logger.info("Strating turtle race!")
-    user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color:")
+    color_prompt = "Which turtle will win the race? Enter a color: "
+    user_bet = screen.textinput(title="Make your bet", prompt=color_prompt)
     logger.info(f"You're betting on: {user_bet}!")
     tim = init_user(user_bet)
     challengers = init_challengers(user_bet)

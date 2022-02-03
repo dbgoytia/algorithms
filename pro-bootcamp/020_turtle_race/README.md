@@ -12,3 +12,6 @@ Enter your turtle color's, for example 'red'.
 
 And best of luck!
 
+Available colors are: 'red', 'blue', 'green', 'yellow', 'orange'.
+
+Probably this doesn't capture all edge cases!
