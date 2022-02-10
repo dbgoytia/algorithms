@@ -11,7 +11,7 @@ from quiz_brain import QuizBrain
 
 
 # Logging configuration
-LOG_LEVEL = "DEBUG"
+LOG_LEVEL = "INFO"
 FORMAT = '%(levelname)s %(message)s'
 logging.basicConfig(format=FORMAT)
 logger = logging.getLogger(__file__)
@@ -142,7 +142,6 @@ def configure() -> dict:
     number_of_questions = input("How many questions?: ")
     configuration['number_of_questions'] = number_of_questions
     difficulty = input("Difficulty (easy/medium/hard): ")
-    print(available_categories)
     print("Available categories:")
     for i in range(len(available_categories)):
         print(f"{i} - {available_categories[i]}")
