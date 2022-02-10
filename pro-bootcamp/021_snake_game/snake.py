@@ -13,6 +13,8 @@ from tkinter import Canvas
 # Global Setup
 WIDTH = 600
 HEIGHT = 600
+SPEED = 5
+DEBUG_MODE = True
 
 # Logging configuration
 LOG_LEVEL = "DEBUG"
@@ -32,7 +34,6 @@ class GameBoard:
         self.canvas = Canvas(master)
         self.canvas.config(width=WIDTH, height=HEIGHT)
         self.canvas.pack()
-
         # Init snake
         Snake(self.canvas)
 
@@ -45,91 +46,64 @@ class Snake:
         self.snake = RawTurtle(canvas, shape='square')
         self.snake.penup()
         self.snake.color('white')
+        self.snake.speed('fastest')
+        self.snake.shapesize(.5, .5,  1)
         # Controls
         self.screen.listen()
-        self.screen.onkey(key='Right', fun=self.move_right)
-        self.screen.onkey(key='Left', fun=self.move_left)
-        self.screen.onkey(key='Up', fun=self.move_up)
-        self.screen.onkey(key='Down', fun=self.move_down)
-        # # Test piece
-        self.testpiece = RawTurtle(canvas, shape='square')
-        self.testpiece.goto(-20,0)
-        self.testpiece.penup()
-        self.testpiece.color('red')
+        self.screen.onkey(key='Right', fun=self.turn_right)
+        self.screen.onkey(key='Left', fun=self.turn_left)
+        self.screen.onkey(key='Up', fun=self.turn_up)
+        self.screen.onkey(key='Down', fun=self.turn_down)
+        self.screen.tracer(0)
+        
         # To move the entire snake
         self.body = [] # An array of turtles that contains all of the pieces required to be moved
-        self.body.append(self.testpiece)
+        self.body.append(self.snake)
         self.screen.bgcolor('black')
-        self.head = self.snake
+        self.game_is_on = True
+
+        if DEBUG_MODE:
+            # Test piece
+            self.testpiece = RawTurtle(canvas, shape='square')
+            self.testpiece.goto(-50,0)
+            self.testpiece.penup()
+            self.testpiece.color('red')
+            self.testpiece.speed('fastest')
+            self.testpiece.shapesize(.5, .5,  1)
+            self.body.append(self.testpiece)
 
 
-    def move_right(self):
+        while self.game_is_on:
+            for seg_num in range( len(self.body) - 1 , 0 , -1):
+                # Each piece moves to the position of the piece in front of it to get a good animation
+                new_x = self.body[seg_num - 1].xcor()
+                new_y = self.body[seg_num - 1].ycor()
+                self.body[seg_num].goto(new_x, new_y)
+            self.body[0].forward(SPEED)
+
+
+    def turn_right(self):
         logger.debug(f'Moving right')
-        logger.debug(f'Turtle is currently facing at angle: {self.head.heading()}')
-        if self.head.heading() != 0:
-            self.head.setheading(0)
-            logger.debug(f'Turtle turned, new angle: {self.head.heading()}')
-        turn = self.head.pos()
-        logger.debug(f'Setting the turn at: {turn}')
-        self.head.forward(20)
-        logger.debug(f'Head position: {self.head.pos()}')
         for x in self.body:
-            x.forward(20)
-            if x.pos() == turn:
-                x.setheading(0)
-                logger.debug(f'Body piece reached turn, turning')
+            x.setheading(0)     
 
 
-    def move_left(self):
+    def turn_left(self):
         logger.debug(f'Moving left')
-        logger.debug(f'Turtle is currently facing at angle: {self.head.heading()}')
-        if self.head.heading() != 180:
-            self.head.setheading(180)
-            logger.debug(f'Turtle turned, new angle: {self.head.heading()}')
-        turn = self.head.pos()
-        logger.debug(f'Setting the turn at: {turn}')
-        self.head.forward(20)
-        logger.debug(f'Head position: {self.head.pos()}')
         for x in self.body:
-            x.forward(20)
-            if x.pos() == turn:
-                x.setheading(180)
-                logger.debug(f'Body piece reached turn, turning')
+            x.setheading(180)     
 
 
-    def move_down(self):
+    def turn_down(self):
         logger.debug(f'Moving down')
-        logger.debug(f'Turtle is currently facing at angle: {self.head.heading()}')
-        if self.head.heading() != 270:
-            self.head.setheading(270)
-            logger.debug(f'Turtle turned, new angle: {self.head.heading()}')
-        turn = self.head.pos()
-        logger.debug(f'Setting the turn at: {turn}')
-        self.head.forward(20)
-        logger.debug(f'Head position: {self.head.pos()}')
         for x in self.body:
-            x.forward(20)
-            if x.pos() == turn:
-                x.setheading(270)
-                logger.debug(f'Body piece reached turn, turning')
+            x.setheading(270)     
 
     
-    def move_up(self):
+    def turn_up(self):
         logger.debug(f'Moving up')
-        logger.debug(f'Turtle is currently facing at angle: {self.head.heading()}')
-        # First only move the head to get the turn position
-        if self.head.heading() != 90:
-            self.head.setheading(90)
-            logger.debug(f'Turtle turned, new angle: {self.head.heading()}')
-        turn = self.head.pos()
-        logger.debug(f'Setting the turn at: {turn}')
-        self.head.forward(20)
-        logger.debug(f'Head position: {self.head.pos()}')
         for x in self.body:
-            x.forward(20)
-            if x.pos() == turn:
-                x.setheading(90)
-                logger.debug(f'Body piece reached turn, turning')
+            x.setheading(90)   
 
 
 if __name__ == '__main__':
