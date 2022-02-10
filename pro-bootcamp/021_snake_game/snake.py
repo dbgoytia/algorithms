@@ -1,18 +1,14 @@
-# Standard library
+# Standard library
+import logging
 from turtle import RawTurtle
 from turtle import TurtleScreen
-import logging
-from tkinter import Tk
-from tkinter import Label
-from tkinter import Canvas
 
-# Third party modules 
+# Third party modules
 
 # Custom modules
 
-# Global Setup
-WIDTH = 600
-HEIGHT = 600
+
+# Global setup
 SPEED = 5
 DEBUG_MODE = True
 
@@ -22,20 +18,6 @@ FORMAT = '%(levelname)s %(message)s'
 logging.basicConfig(format=FORMAT)
 logger = logging.getLogger(__file__)
 logger.setLevel(LOG_LEVEL.upper())
-
-
-class GameBoard:
-    
-    def __init__(self, master):
-        self.parent = master
-        master.title('Snake')
-        self.label = Label(master, text='Game on!')
-        self.label.pack()
-        self.canvas = Canvas(master)
-        self.canvas.config(width=WIDTH, height=HEIGHT)
-        self.canvas.pack()
-        # Init snake
-        Snake(self.canvas)
 
 class Snake:
 
@@ -104,9 +86,3 @@ class Snake:
         logger.debug(f'Moving up')
         for x in self.body:
             x.setheading(90)   
-
-
-if __name__ == '__main__':
-    root = Tk()
-    gameboard = GameBoard(root)
-    root.mainloop()
