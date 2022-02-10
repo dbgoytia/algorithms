@@ -13,7 +13,6 @@ from snake import Snake
 WIDTH = 600
 HEIGHT = 600
 
-
 class GameBoard:
     
     def __init__(self, master):

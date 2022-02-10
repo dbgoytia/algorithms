@@ -3,10 +3,9 @@ import logging
 from turtle import RawTurtle
 from turtle import TurtleScreen
 
-# Third party modules
+# Third party modulesc
 
 # Custom modules
-
 
 # Global setup
 SPEED = 5
