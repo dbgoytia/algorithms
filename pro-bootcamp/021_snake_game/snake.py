@@ -23,9 +23,11 @@ logger.setLevel(LOG_LEVEL.upper())
 
 class Snake:
 
+
     body = []
     game_is_on = True
     screen = None
+
 
     def __init__(self, canvas):
         self.init_screen(canvas)
@@ -77,7 +79,6 @@ class Snake:
         self.body[0].forward(SPEED)
         logger.debug(f'Head position is {self.body[0].pos()}')
         logger.debug(f'Head angle is {self.body[0].heading()}')
-
 
 
     def turn_right(self):
