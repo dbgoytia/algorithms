@@ -13,6 +13,7 @@ WIDTH = 600
 HEIGHT = 600
 
 class GameBoard:
+
     
     def __init__(self, master):
         self.parent = master
@@ -24,6 +25,7 @@ class GameBoard:
         self.canvas.pack()
         # Init snake
         Snake(self.canvas)
+
 
 if __name__ == '__main__':
     root = Tk()
