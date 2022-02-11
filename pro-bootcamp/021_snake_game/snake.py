@@ -9,11 +9,11 @@ import time
 # Custom modules
 
 # Global setup
-SPEED = 5
+SPEED = 10
 DEBUG_MODE = True
 LOG_LEVEL = 'debug'
-SHAPE_WIDTH_PIXELS = .3
-SHAPE_HEIGHT_PIXELS = .3
+SHAPE_WIDTH_PIXELS = .5
+SHAPE_HEIGHT_PIXELS = .5
 
 # Logging configuration
 FORMAT = '%(levelname)s %(message)s'
@@ -63,14 +63,21 @@ class Snake:
 
     def init_game(self):
         while self.game_is_on:
-            for seg_num in range( len(self.body) - 1 , 0 , -1):
-                # Each piece moves to the position of the piece in front of it to get a good animation
-                new_x = self.body[seg_num - 1].xcor()
-                new_y = self.body[seg_num - 1].ycor()
-                self.body[seg_num].goto(new_x, new_y)
-            self.body[0].forward(SPEED)
-            logger.debug(f'Head position is {self.body[0].pos()}')
-            logger.debug(f'Head angle is {self.body[0].heading()}')
+            self.screen.update()
+            time.sleep(0.1)
+            self.move()
+            
+
+    def move(self):
+        for seg_num in range( len(self.body) - 1 , 0 , -1): # Start with a three segment snake
+            # Each piece moves to the position of the piece in front of it to get a good animation
+            new_x = self.body[seg_num - 1].xcor()
+            new_y = self.body[seg_num - 1].ycor()
+            self.body[seg_num].goto(new_x, new_y)
+        self.body[0].forward(SPEED)
+        logger.debug(f'Head position is {self.body[0].pos()}')
+        logger.debug(f'Head angle is {self.body[0].heading()}')
+
 
 
     def turn_right(self):
