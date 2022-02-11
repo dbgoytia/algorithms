@@ -12,6 +12,8 @@ import time
 SPEED = 5
 DEBUG_MODE = True
 LOG_LEVEL = 'debug'
+SHAPE_WIDTH_PIXELS = .3
+SHAPE_HEIGHT_PIXELS = .3
 
 # Logging configuration
 FORMAT = '%(levelname)s %(message)s'
@@ -29,7 +31,7 @@ class Snake:
         self.snake.penup()
         self.snake.color('white')
         self.snake.speed('fastest')
-        self.snake.shapesize(.3, .3,  1)
+        self.snake.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS,  1)
         # Controls
         self.screen.listen()
         self.screen.onkey(key='Right', fun=self.turn_right)
@@ -52,15 +54,16 @@ class Snake:
         
 
     def init_body(self, canvas):
-        starting_positions = [(-.3, 0), (-.6, 0)]
+        starting_positions = [(-SHAPE_WIDTH_PIXELS, 0), (-SHAPE_WIDTH_PIXELS, 0)]
         for pos in starting_positions:
             x = RawTurtle(canvas, shape='square')
             x.penup()
             x.goto(pos)
             x.color('red')
             x.speed('fastest')
-            x.shapesize(.3, .3, 1)
+            x.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS, 1)
             self.body.append(x)
+
 
     def init_game(self):
         while self.game_is_on:
@@ -70,7 +73,8 @@ class Snake:
                 new_y = self.body[seg_num - 1].ycor()
                 self.body[seg_num].goto(new_x, new_y)
             self.body[0].forward(SPEED)
-
+            logger.debug(f'Head position is {self.body[0].pos()}')
+            logger.debug(f'Head angle is {self.body[0].heading()}')
 
 
     def turn_right(self):
