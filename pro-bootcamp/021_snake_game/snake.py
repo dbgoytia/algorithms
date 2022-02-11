@@ -23,45 +23,41 @@ logger.setLevel(LOG_LEVEL.upper())
 
 class Snake:
 
+    body = []
+    game_is_on = True
+    screen = None
+
     def __init__(self, canvas):
-        # Screen setup
+        self.init_screen(canvas)
+        self.init_controls()
+        self.init_body(canvas)
+        self.init_game()
+    
+
+    def init_screen(self, canvas):
         self.screen = TurtleScreen(canvas)
-        # Snake head setup
-        self.snake = RawTurtle(canvas, shape='square')
-        self.snake.penup()
-        self.snake.color('white')
-        self.snake.speed('fastest')
-        self.snake.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS,  1)
-        # Controls
+
+
+    def init_controls(self):
+        # Controls, could be moved to a better configuration file
         self.screen.listen()
         self.screen.onkey(key='Right', fun=self.turn_right)
         self.screen.onkey(key='Left', fun=self.turn_left)
         self.screen.onkey(key='Up', fun=self.turn_up)
         self.screen.onkey(key='Down', fun=self.turn_down)
-        self.screen.tracer(0)
-        
-        # To move the entire snake
-        self.body = [] # An array of turtles that contains all of the pieces required to be moved
-        self.body.append(self.snake)
-        self.screen.bgcolor('black')
-        self.game_is_on = True
+        self.screen.tracer(0) # Not sure if this is affecting the environment.
 
-        # Initialize the snake body      
-        self.init_body(canvas)
-        
-        # Initialize the game
-        self.init_game()
-        
 
     def init_body(self, canvas):
-        starting_positions = [(-SHAPE_WIDTH_PIXELS, 0), (-SHAPE_WIDTH_PIXELS, 0)]
+        starting_positions = [(0, 0), (-SHAPE_WIDTH_PIXELS, 0), (-SHAPE_WIDTH_PIXELS, 0)]
         for pos in starting_positions:
             x = RawTurtle(canvas, shape='square')
             x.penup()
             x.goto(pos)
-            x.color('red')
+            x.color('white')
             x.speed('fastest')
             x.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS, 1)
+            self.screen.bgcolor('black')
             self.body.append(x)
 
 
