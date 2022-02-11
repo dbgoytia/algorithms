@@ -2,6 +2,7 @@
 import logging
 from turtle import RawTurtle
 from turtle import TurtleScreen
+import time
 
 # Third party modulesc
 
@@ -10,9 +11,9 @@ from turtle import TurtleScreen
 # Global setup
 SPEED = 5
 DEBUG_MODE = True
+LOG_LEVEL = 'debug'
 
 # Logging configuration
-LOG_LEVEL = "DEBUG"
 FORMAT = '%(levelname)s %(message)s'
 logging.basicConfig(format=FORMAT)
 logger = logging.getLogger(__file__)
@@ -28,7 +29,7 @@ class Snake:
         self.snake.penup()
         self.snake.color('white')
         self.snake.speed('fastest')
-        self.snake.shapesize(.5, .5,  1)
+        self.snake.shapesize(.3, .3,  1)
         # Controls
         self.screen.listen()
         self.screen.onkey(key='Right', fun=self.turn_right)
@@ -43,17 +44,25 @@ class Snake:
         self.screen.bgcolor('black')
         self.game_is_on = True
 
-        if DEBUG_MODE:
-            # Test piece
-            self.testpiece = RawTurtle(canvas, shape='square')
-            self.testpiece.goto(-50,0)
-            self.testpiece.penup()
-            self.testpiece.color('red')
-            self.testpiece.speed('fastest')
-            self.testpiece.shapesize(.5, .5,  1)
-            self.body.append(self.testpiece)
+        # Initialize the snake body      
+        self.init_body(canvas)
+        
+        # Initialize the game
+        self.init_game()
+        
 
+    def init_body(self, canvas):
+        starting_positions = [(-.3, 0), (-.6, 0)]
+        for pos in starting_positions:
+            x = RawTurtle(canvas, shape='square')
+            x.penup()
+            x.goto(pos)
+            x.color('red')
+            x.speed('fastest')
+            x.shapesize(.3, .3, 1)
+            self.body.append(x)
 
+    def init_game(self):
         while self.game_is_on:
             for seg_num in range( len(self.body) - 1 , 0 , -1):
                 # Each piece moves to the position of the piece in front of it to get a good animation
@@ -61,6 +70,7 @@ class Snake:
                 new_y = self.body[seg_num - 1].ycor()
                 self.body[seg_num].goto(new_x, new_y)
             self.body[0].forward(SPEED)
+
 
 
     def turn_right(self):

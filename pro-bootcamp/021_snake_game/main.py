@@ -1,5 +1,4 @@
 # Standard library
-import logging
 from tkinter import Tk
 from tkinter import Label
 from tkinter import Canvas
