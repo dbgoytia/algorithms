@@ -79,23 +79,27 @@ class Snake:
 
     def turn_right(self):
         logger.debug(f'Moving right')
-        for x in self.body:
-            x.setheading(0)     
+        if self.body[0].heading() != 180:
+            for x in self.body:
+                x.setheading(0)     
 
 
     def turn_left(self):
         logger.debug(f'Moving left')
-        for x in self.body:
-            x.setheading(180)     
+        if self.body[0].heading() != 0:
+            for x in self.body:
+                x.setheading(180)     
 
 
     def turn_down(self):
         logger.debug(f'Moving down')
-        for x in self.body:
-            x.setheading(270)     
+        if self.body[0].heading() != 90:
+            for x in self.body:
+                x.setheading(270)     
 
     
     def turn_up(self):
         logger.debug(f'Moving up')
-        for x in self.body:
-            x.setheading(90)   
+        if self.body[0].heading() != 270:
+            for x in self.body:
+                x.setheading(90)   
