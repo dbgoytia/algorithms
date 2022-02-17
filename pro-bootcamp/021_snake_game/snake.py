@@ -2,7 +2,6 @@
 import logging
 from turtle import RawTurtle
 from turtle import TurtleScreen
-import time
 
 # Third party modulesc
 
@@ -21,34 +20,20 @@ logging.basicConfig(format=FORMAT)
 logger = logging.getLogger(__file__)
 logger.setLevel(LOG_LEVEL.upper())
 
-class Snake:
+class Snake(RawTurtle):
+    '''
+    Controls the snake in the game
+    '''
 
 
     body = []
-    game_is_on = True
     screen = None
 
 
     def __init__(self, canvas):
-        self.init_screen(canvas)
-        self.init_controls()
+        super().__init__(canvas)
         self.init_body(canvas)
-        self.init_game()
     
-
-    def init_screen(self, canvas):
-        self.screen = TurtleScreen(canvas)
-
-
-    def init_controls(self):
-        # Controls, could be moved to a better configuration file
-        self.screen.listen()
-        self.screen.onkey(key='Right', fun=self.turn_right)
-        self.screen.onkey(key='Left', fun=self.turn_left)
-        self.screen.onkey(key='Up', fun=self.turn_up)
-        self.screen.onkey(key='Down', fun=self.turn_down)
-        self.screen.tracer(0) # Not sure if this is affecting the environment.
-
 
     def init_body(self, canvas):
         starting_positions = [(0, 0), (-SHAPE_WIDTH_PIXELS, 0), (-SHAPE_WIDTH_PIXELS, 0)]
@@ -58,16 +43,9 @@ class Snake:
             x.goto(pos)
             x.color('white')
             x.speed('fastest')
+            x.screen.bgcolor('black')
             x.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS, 1)
-            self.screen.bgcolor('black')
             self.body.append(x)
-
-
-    def init_game(self):
-        while self.game_is_on:
-            self.screen.update()
-            time.sleep(0.1)
-            self.move()
             
 
     def move(self):
