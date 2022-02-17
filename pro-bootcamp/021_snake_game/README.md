@@ -1,12 +1,15 @@
 ## Snake game
 
-Try to do as much score as you can! For the controls, use the arrows to move the snake. 
+The snake game is really simple. The rules of the game are to fetch as much food as you can, and avoid hitting the walls or your own tail. Try to do as much score as you can. 
+
+## Controls 
+For the controls, use the arrows to move the snake. 
 
 The game ends when you crash into a wall, or when you crash with your own tail.
 
 ## Why did I build a snake game?
 
-Goal of this day is to understand how to break down the problem into smaller subsets of problems.
+Goal of this day is to understand how to break down the problem into smaller subsets of problems, improve OOP experience, and overall just have fun learning something new.
 
 ## Features
 
