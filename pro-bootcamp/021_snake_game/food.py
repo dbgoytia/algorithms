@@ -13,7 +13,7 @@ WIDTH_FOOD_PIXELS = .5
 WIDTH = 600
 HEIGHT = 600
 OFFSET = 15.0
-LOG_LEVEL="DEBUG"
+LOG_LEVEL="INFO"
 
 # Logging configuration
 FORMAT = '%(levelname)s %(message)s'
@@ -33,9 +33,15 @@ class Food(RawTurtle):
         self.penup()
         self.shapesize(stretch_len=LENGTH_FOOD_PIXELS, stretch_wid=WIDTH_FOOD_PIXELS)
         self.color('red')
-        self.shape('circle')
+        self.shape('square')
         self.speed('fastest')
         random_x = random.randint(-WIDTH/2+OFFSET, WIDTH/2-OFFSET)
         random_y = random.randint(-HEIGHT/2+OFFSET, HEIGHT/2-OFFSET)
         self.goto(random_x, random_y)
         logger.debug(f'Food position: {self.pos()}')
+
+    
+    def refresh(self):
+        random_x = random.randint(-WIDTH/2+OFFSET, WIDTH/2-OFFSET)
+        random_y = random.randint(-HEIGHT/2+OFFSET, HEIGHT/2-OFFSET)
+        self.goto(random_x, random_y)

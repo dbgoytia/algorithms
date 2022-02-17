@@ -1,7 +1,6 @@
 # Standard library
 import logging
 from turtle import RawTurtle
-from turtle import TurtleScreen
 
 # Third party modulesc
 
@@ -33,6 +32,7 @@ class Snake(RawTurtle):
     def __init__(self, canvas):
         super().__init__(canvas)
         self.init_body(canvas)
+        self.head = self.body[0]
     
 
     def init_body(self, canvas):

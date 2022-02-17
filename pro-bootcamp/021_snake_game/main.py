@@ -48,6 +48,7 @@ class GameBoard:
             self.screen.update()
             time.sleep(0.1)
             self.snake.move()
+            self.detect_colision()
     
 
     def init_controls(self):
@@ -58,7 +59,12 @@ class GameBoard:
         self.screen.onkey(key='Up', fun=self.snake.turn_up)
         self.screen.onkey(key='Down', fun=self.snake.turn_down)
 
-    
+
+    def detect_colision(self):
+        if self.snake.head.distance(self.food) < 10:
+            self.food.refresh()
+
+
 
 if __name__ == '__main__':
     root = Tk()
