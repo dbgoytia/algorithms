@@ -91,10 +91,8 @@ class GameBoard:
 
 
         # Detect colission with own tail
-        for segment in self.snake.body:
-            if segment == self.snake.head:
-                pass
-            elif self.snake.head.distance(segment) < 5:
+        for segment in self.snake.body[1:]:
+            if self.snake.head.distance(segment) < 5:
                 print(f'distance: {self.snake.head.distance(segment)}')
                 print(f'head: {self.snake.head.pos()}, segment: {segment.pos()}')
                 self.game_is_on = False
