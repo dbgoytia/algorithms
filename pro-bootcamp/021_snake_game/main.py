@@ -71,9 +71,25 @@ class GameBoard:
 
 
     def detect_colision(self):
+
+        # Detect collission with food
         if self.snake.head.distance(self.food) < 10:
             self.scoreboard.increase_score()
             self.food.refresh()
+
+        # Detect colission with wall
+        if self.snake.head.xcor() > (WIDTH/2 - 20) \
+            or self.snake.head.xcor() < (-WIDTH/2) + 20 \
+            or self.snake.head.ycor() > (HEIGHT/2) - 20 \
+            or self.snake.head.ycor() < (-HEIGHT/2) +20:
+            print("Game over!")
+            logger.info('You lose!')
+            self.game_is_on = False
+            self.scoreboard.game_over()
+
+        # Detect colission with own tail
+        
+
 
 
 

@@ -11,7 +11,7 @@ WIDTH = 600
 HEIGHT = 600
 OFFSET = 30
 LOG_LEVEL="INFO"
-ALLIGNMENT="center"
+ALIGNMENT="center"
 STYLE=('Courier', 15, 'italic')
 
 # Logging configuration
@@ -26,10 +26,12 @@ class Scoreboard(RawTurtle):
     Renders as a scoreboard on the canvas
     '''
 
+
     def __init__(self, canvas):
         super().__init__(canvas)
         self.score = 0
         self.write_score()
+
 
     def write_score(self):
         logger.info(f'Score: {self.score}')
@@ -45,3 +47,9 @@ class Scoreboard(RawTurtle):
         self.score += 1
         self.clear()
         self.write_score()
+
+
+    def game_over(self):
+        self.color('white')
+        self.goto(0,0)
+        self.write('GAME OVER', align=ALIGNMENT, font=STYLE)
