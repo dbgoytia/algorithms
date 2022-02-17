@@ -2,7 +2,7 @@
 
 The snake game is really simple. The rules of the game are to fetch as much food as you can, and avoid hitting the walls or your own tail. Try to do as much score as you can. 
 
-# Controllers
+## Controllers
 For the controls, use the arrows to move the snake. 
 
 The game ends when you crash into a wall, or when you crash with your own tail.
