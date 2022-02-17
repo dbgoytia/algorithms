@@ -14,3 +14,5 @@ Goal of this day is to understand how to break down the problem into smaller sub
 * Snake movement
 * Game logic
 
+## Game
+![alt text](https://github.com/dbgoytia/[reponame]/blob/[branch]/image.jpg?raw=true)
