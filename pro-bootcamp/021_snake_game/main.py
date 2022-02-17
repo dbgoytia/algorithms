@@ -11,6 +11,7 @@ from turtle import TurtleScreen
 # Custom modules
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 
 # Global Setup
 WIDTH = 600
@@ -35,6 +36,7 @@ class GameBoard:
         self.food = Food(self.canvas)
         self.game_is_on = True
         self.init_controls()
+        self.scoreboard = Scoreboard(self.canvas)
         self.init_game()
 
 
@@ -46,7 +48,6 @@ class GameBoard:
     def init_game(self):
         while self.game_is_on:
             self.screen.update()
-            time.sleep(0.1)
             self.snake.move()
             self.detect_colision()
     
@@ -62,6 +63,7 @@ class GameBoard:
 
     def detect_colision(self):
         if self.snake.head.distance(self.food) < 10:
+            self.scoreboard.increase_score()
             self.food.refresh()
 
 

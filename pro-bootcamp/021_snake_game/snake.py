@@ -9,7 +9,7 @@ from turtle import RawTurtle
 # Global setup
 SPEED = 10
 DEBUG_MODE = True
-LOG_LEVEL = 'debug'
+LOG_LEVEL = 'INFO'
 SHAPE_WIDTH_PIXELS = .5
 SHAPE_HEIGHT_PIXELS = .5
 
