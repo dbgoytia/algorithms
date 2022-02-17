@@ -14,5 +14,5 @@ Goal of this day is to understand how to break down the problem into smaller sub
 * Snake movement
 * Game logic
 
-## Game
+## Game
 ![alt text](https://github.com/dbgoytia/algorithms/blob/0baa174b044341f2d077ea63ce89fbbb6a4ef78e/pro-bootcamp/021_snake_game/snake.png?raw=true)
