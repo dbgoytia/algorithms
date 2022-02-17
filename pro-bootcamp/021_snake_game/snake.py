@@ -24,29 +24,36 @@ class Snake(RawTurtle):
     Controls the snake in the game
     '''
 
-
     body = []
     screen = None
 
-
     def __init__(self, canvas):
         super().__init__(canvas)
-        self.init_body(canvas)
+        self.canvas = canvas
+        self.init_body()
         self.head = self.body[0]
+        self.tail = self.body[-1]
     
 
-    def init_body(self, canvas):
+    def init_body(self):
         starting_positions = [(0, 0), (-SHAPE_WIDTH_PIXELS, 0), (-SHAPE_WIDTH_PIXELS, 0)]
         for pos in starting_positions:
-            x = RawTurtle(canvas, shape='square')
-            x.penup()
-            x.goto(pos)
-            x.color('white')
-            x.speed('fastest')
-            x.screen.bgcolor('black')
-            x.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS, 1)
-            self.body.append(x)
+            self.add_segment(pos)
             
+
+    def add_segment(self, pos):
+        x = RawTurtle(self.canvas, shape='square')
+        x.penup()
+        x.goto(pos)
+        x.color('white')
+        x.speed('fastest')
+        x.screen.bgcolor('black')
+        x.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS, 1)
+        self.body.append(x)
+
+
+    def extend(self):
+        self.add_segment(self.tail.pos())
 
     def move(self):
         for seg_num in range( len(self.body) - 1 , 0 , -1): # Start with a three segment snake

@@ -76,6 +76,8 @@ class GameBoard:
         if self.snake.head.distance(self.food) < 10:
             self.scoreboard.increase_score()
             self.food.refresh()
+            self.snake.extend()
+            
 
         # Detect colission with wall
         if self.snake.head.xcor() > (WIDTH/2 - 20) \
