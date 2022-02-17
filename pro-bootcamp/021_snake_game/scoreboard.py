@@ -11,7 +11,8 @@ WIDTH = 600
 HEIGHT = 600
 OFFSET = 30
 LOG_LEVEL="INFO"
-
+ALLIGNMENT="center"
+STYLE=('Courier', 15, 'italic')
 
 # Logging configuration
 FORMAT = '%(levelname)s %(message)s'
@@ -35,7 +36,7 @@ class Scoreboard(RawTurtle):
         self.penup()
         self.hideturtle()
         self.goto(0, HEIGHT/2-OFFSET)
-        self.style = style = ('Courier', 15, 'italic')
+        style = STYLE
         self.color('white')
         self.write(f'Score: {self.score}', move=True, align="center", font=style)
 
