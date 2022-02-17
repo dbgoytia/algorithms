@@ -1,5 +1,6 @@
 # std library
 from turtle import RawTurtle
+import logging
 
 # third party modules
 
@@ -9,6 +10,14 @@ from turtle import RawTurtle
 WIDTH = 600
 HEIGHT = 600
 OFFSET = 30
+LOG_LEVEL="INFO"
+
+
+# Logging configuration
+FORMAT = '%(levelname)s %(message)s'
+logging.basicConfig(format=FORMAT)
+logger = logging.getLogger(__file__)
+logger.setLevel(LOG_LEVEL.upper())
 
 class Scoreboard(RawTurtle):
 
@@ -22,6 +31,7 @@ class Scoreboard(RawTurtle):
         self.write_score()
 
     def write_score(self):
+        logger.info(f'Score: {self.score}')
         self.penup()
         self.hideturtle()
         self.goto(0, HEIGHT/2-OFFSET)

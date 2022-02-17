@@ -2,8 +2,8 @@
 from tkinter import Tk
 from tkinter import Label
 from tkinter import Canvas
-import time
 from turtle import TurtleScreen
+import logging
 
 
 # Third party modules 
@@ -18,6 +18,14 @@ WIDTH = 600
 HEIGHT = 600
 LENGTH_FOOD_PIXELS = .3
 WIDTH_FOOD_PIXELS = .3
+LOG_LEVEL="INFO"
+
+
+# Logging configuration
+FORMAT = '%(levelname)s %(message)s'
+logging.basicConfig(format=FORMAT)
+logger = logging.getLogger(__file__)
+logger.setLevel(LOG_LEVEL.upper())
 
 class GameBoard:
 
@@ -46,6 +54,7 @@ class GameBoard:
 
 
     def init_game(self):
+        logger.info('Starting snake game')
         while self.game_is_on:
             self.screen.update()
             self.snake.move()
