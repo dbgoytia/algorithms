@@ -15,4 +15,4 @@ Goal of this day is to understand how to break down the problem into smaller sub
 * Game logic
 
 ## Game
-![alt text](https://github.com/dbgoytia/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/dbgoytia/algorithms/blob/0baa174b044341f2d077ea63ce89fbbb6a4ef78e/pro-bootcamp/021_snake_game/snake.png?raw=true)
