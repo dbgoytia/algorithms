@@ -46,8 +46,8 @@ class Snake(RawTurtle):
         x.goto(pos)
         x.color('white')
         x.speed('fastest')
-        x.screen.bgcolor('black')
         x.shapesize(SHAPE_WIDTH_PIXELS, SHAPE_WIDTH_PIXELS, 1)
+        x.screen.bgcolor('black')
         self.body.append(x)
 
 
@@ -76,14 +76,15 @@ class Snake(RawTurtle):
         logger.debug(f'Moving left')
         if self.body[0].heading() != 0:
             for x in self.body:
-                x.setheading(180)     
+                x.setheading(180)
 
 
     def turn_down(self):
         logger.debug(f'Moving down')
         if self.body[0].heading() != 90:
             for x in self.body:
-                x.setheading(270)     
+                x.setheading(270)   
+
 
     
     def turn_up(self):
