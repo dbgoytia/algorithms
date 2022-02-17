@@ -32,7 +32,6 @@ class Snake(RawTurtle):
         self.canvas = canvas
         self.init_body()
         self.head = self.body[0]
-        self.tail = self.body[-1]
     
 
     def init_body(self):
@@ -53,7 +52,7 @@ class Snake(RawTurtle):
 
 
     def extend(self):
-        self.add_segment(self.tail.pos())
+        self.add_segment(self.body[-1].pos())
 
     def move(self):
         for seg_num in range( len(self.body) - 1 , 0 , -1): # Start with a three segment snake
