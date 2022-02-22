@@ -2,11 +2,13 @@
 from turtle import Screen
 from turtle import exitonclick
 import logging
+import time
 
 # third party modules
 
 # custom modules
 from paddle import Paddle
+from ball import Ball
 
 
 # Global Setup
@@ -42,12 +44,23 @@ class GameBoard:
         self.screen.setup(width=WIDTH, height=HEIGHT)
 
         self.init_players()
+        self.init_ball()
+
         self.init_controllers()
 
         self.game_is_on = True
         
         while self.game_is_on:
             self.screen.update()
+            self.ball.move()
+            time.sleep(0.1)
+
+
+    def init_ball(self):
+        """
+        Creates the ball on screen to play
+        """
+        self.ball = Ball()
 
 
     def init_players(self):
