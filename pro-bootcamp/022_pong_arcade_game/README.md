@@ -3,6 +3,7 @@
 Pong is one of the classic arcade games. Probably one of the first ones! It's basically a tennis simulation. It was created by Allan Alcorn,
 as a fresh recruit to Atari.
 
+![alt text](https://github.com/dbgoytia/algorithms/blob/0baa174b044341f2d077ea63ce89fbbb6a4ef78e/pro-bootcamp/022_pong_arcade_game/pong.png?raw=true)
 
 ## Controls 
 Player one controls using the up and down arrows, player two controlls using 'w' and 's' keys.
