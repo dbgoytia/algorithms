@@ -5,7 +5,7 @@ as a fresh recruit to Atari.
 
 ![alt text](https://github.com/dbgoytia/algorithms/blob/36a92763b50a0388f6fbeefa133fcc5772f2b88d/pro-bootcamp/022_pong_arcade_game/pong.png?raw=true)
 
-## Controls 
+## Controls 
 Player one controls using the up and down arrows, player two controlls using 'w' and 's' keys.
 
 ## Why re-build pong?
