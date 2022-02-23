@@ -46,7 +46,7 @@ class Paddle(Turtle):
 
     def detect_colission_with_ball(self):
         """
-        Detects colission with the ball to bounce back
+        Detects colission with the ball to bounce_y back
         """
         pass
 

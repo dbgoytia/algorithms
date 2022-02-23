@@ -20,6 +20,7 @@ logger.setLevel(LOG_LEVEL.upper())
 SHAPE='circle'
 COLOR='red'
 SPEED=10
+OFFSET=30
 
 class Ball(Turtle):
 
@@ -32,13 +33,41 @@ class Ball(Turtle):
         self.shape(SHAPE)
         self.color(COLOR)
         self.penup()
+        self.x_move = 10
+        self.y_move = 10
+
+    
+    def bounce_y(self) -> list:
+        """
+        bounces the ball on the top and bottom portions of the screen
+
+        Returns:
+            list: A tuple containing x,y positions for the bounce_y
+        """
+        print("colided with wall!")
+        # self.x_move *= -1
+        self.y_move *= -1
+
+    
+    def bounce_x(self) -> list:
+        self.x_move *= -1
 
     
     def move(self) -> None:
         """
         Moves the ball on screen
         """
-        new_x = self.xcor() + SPEED
-        new_y = self.ycor() + SPEED
+        logger.debug(f'Ball position: {self.pos()}')
+        logger.debug(f'X move: {self.x_move}')
+        logger.debug(f'Y move: {self.y_move}')
+    
+        if self.ycor() > (300 - OFFSET) and self.ycor() > (-300 + OFFSET):
+            self.bounce_y()
+        
+        if self.ycor() < (-300 + OFFSET) and self.ycor() < (300 - OFFSET):
+            self.bounce_y()
+
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
 

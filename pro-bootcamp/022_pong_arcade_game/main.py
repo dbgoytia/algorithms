@@ -51,9 +51,16 @@ class GameBoard:
         self.game_is_on = True
         
         while self.game_is_on:
+            time.sleep(0.1)
             self.screen.update()
             self.ball.move()
-            time.sleep(0.1)
+
+            # Player one contact
+            if self.ball.distance(self.playerone) < 50 and self.ball.xcor() > 340 \
+                or self.ball.distance(self.playertwo) < 50 and self.ball.xcor() < -340:
+                logger.info('Player one made contact with the ball!')
+                self.ball.bounce_x()
+            
 
 
     def init_ball(self):
