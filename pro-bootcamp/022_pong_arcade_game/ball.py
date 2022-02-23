@@ -19,7 +19,7 @@ logger.setLevel(LOG_LEVEL.upper())
 # Global Configuration
 SHAPE='circle'
 COLOR='red'
-SPEED=10
+SPEED=30
 OFFSET=30
 
 class Ball(Turtle):
@@ -35,23 +35,31 @@ class Ball(Turtle):
         self.penup()
         self.x_move = 10
         self.y_move = 10
+        self.move_speed = 0.1
 
     
-    def bounce_y(self) -> list:
+    def bounce_y(self):
         """
         bounces the ball on the top and bottom portions of the screen
-
-        Returns:
-            list: A tuple containing x,y positions for the bounce_y
         """
-        print("colided with wall!")
-        # self.x_move *= -1
         self.y_move *= -1
 
     
     def bounce_x(self) -> list:
+        """
+        bounces the ball on the left and right portions of the screen
+        """
         self.x_move *= -1
+        self.move_speed * 0.9 # Gives speed each time a paddle hits the ball
 
+
+    def reset_ball(self) -> None:
+        """
+        Resets the ball position and sends it to the center of the screen
+        """
+        self.goto((0,0))
+        self.bounce_x()
+        self.move_speed = 0.1
     
     def move(self) -> None:
         """
@@ -70,4 +78,5 @@ class Ball(Turtle):
         new_x = self.xcor() + self.x_move
         new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
+
 

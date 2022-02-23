@@ -1,6 +1,5 @@
 # std library
 from turtle import Screen
-from turtle import exitonclick
 import logging
 import time
 
@@ -9,6 +8,7 @@ import time
 # custom modules
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 
 
 # Global Setup
@@ -45,22 +45,42 @@ class GameBoard:
 
         self.init_players()
         self.init_ball()
+        self.init_scoreboard()
 
         self.init_controllers()
 
         self.game_is_on = True
         
         while self.game_is_on:
-            time.sleep(0.1)
+            time.sleep(self.ball.move_speed)
             self.screen.update()
             self.ball.move()
 
             # Player one contact
-            if self.ball.distance(self.playerone) < 50 and self.ball.xcor() > 340 \
-                or self.ball.distance(self.playertwo) < 50 and self.ball.xcor() < -340:
+            if self.ball.distance(self.playerone) < 50 and self.ball.xcor() > 320 \
+                or self.ball.distance(self.playertwo) < 50 and self.ball.xcor() < -320:
                 logger.info('Player one made contact with the ball!')
                 self.ball.bounce_x()
             
+
+            # Ball out of court
+            if self.ball.xcor() > 380:
+                self.ball.reset_ball()
+                logger.info('Player one scored!')
+                self.scoreboard.playerone_point()
+            
+            if self.ball.xcor() < -380:
+                self.ball.reset_ball()
+                logger.info('Player two scored!')
+                self.scoreboard.playertwo_point()
+
+
+
+    def init_scoreboard(self):
+        """
+        Creates scoreboard on screen
+        """
+        self.scoreboard = Scoreboard()
 
 
     def init_ball(self):
