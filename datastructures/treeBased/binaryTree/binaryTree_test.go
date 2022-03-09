@@ -1,6 +1,7 @@
 package binaryTree
 
 import (
+	"github.com/dbgoytia/algorithms/datastructures"
 	"testing"
 )
 
