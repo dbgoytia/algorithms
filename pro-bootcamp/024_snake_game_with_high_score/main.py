@@ -2,8 +2,6 @@
 from turtle import Screen
 import logging
 import time
-import sys
-
 
 # Third party modules 
 
@@ -36,7 +34,6 @@ class GameBoard:
         self.snake = Snake()
         self.food = Food()
         self.game_is_on = True
-        self.init_controls()
         self.scoreboard = Scoreboard()
         self.init_game()
 
@@ -57,12 +54,24 @@ class GameBoard:
         logger.info('Starting snake game')
         while self.game_is_on:
             self.screen.update()
+            self.keys_deactivate()
             self.snake.move()
-            self.detect_colision()
             time.sleep(0.1)
+            self.keys_activate()
+            self.detect_colision()
 
 
-    def init_controls(self):
+    def keys_deactivate(self):
+        """
+        Deactivates keys on screen for good flow
+        """
+        self.screen.onkey(key='Right', fun=None)
+        self.screen.onkey(key='Left', fun=None)
+        self.screen.onkey(key='Up', fun=None)
+        self.screen.onkey(key='Down', fun=None)
+
+
+    def keys_activate(self):
         """
         Controllers for moving the snake
         """

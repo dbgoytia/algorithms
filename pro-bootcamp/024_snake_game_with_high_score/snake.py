@@ -1,7 +1,6 @@
 # Standard library
 import logging
 from turtle import Turtle
-from collections import deque
 
 # Third party modulesc
 
@@ -74,8 +73,8 @@ class Snake(Turtle):
         logger.debug(f'Moving right')
         if self.body[0].heading() != 180:
             for x in self.body:
-                x.setheading(0)     
-
+                x.setheading(0)  
+        
 
     def turn_left(self):
         logger.debug(f'Moving left')
@@ -84,15 +83,18 @@ class Snake(Turtle):
                 x.setheading(180)
 
 
+
     def turn_down(self):
         logger.debug(f'Moving down')
         if self.body[0].heading() != 90:
             for x in self.body:
-                x.setheading(270)   
+                x.setheading(270)  
+
 
     
     def turn_up(self):
         logger.debug(f'Moving up')
         if self.body[0].heading() != 270:
             for x in self.body:
-                x.setheading(90)   
+                x.setheading(90)
+
