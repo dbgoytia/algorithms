@@ -21,10 +21,39 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
+        if not self.is_empty_scoreboard():
+            self.get_high_score()
+        else:
+            self.high_score = 0
         self.write_score()
 
 
-    def write_score(self):
+    def get_high_score(self) -> None:
+        """
+        Gets high score from file
+        """
+        with open(file='data.txt', mode='r') as f:
+            saved_high_score = f.read()
+        self.high_score = int(saved_high_score)
+
+    
+    def is_empty_scoreboard(self) -> bool:
+        """
+        Checks if scoreboard is empty
+
+        Returns:
+            bool: True if scoreboard is empty
+        """
+        with open(file='data.txt', mode='r') as f:
+            if not f.read():
+                return True
+        return False
+        
+
+    def write_score(self) -> None:
+        """
+        Writes scoreboard on screen using Turtle
+        """
         self.clear()
         logger.info(f'Score: {self.score}')
         self.penup()
@@ -32,16 +61,26 @@ class Scoreboard(Turtle):
         self.goto(0, SnakeConfig.height/2-SnakeConfig.offset)
         style = SnakeConfig.style
         self.color('black')
-        self.write(f'Score: {self.score}', move=True, align="center", font=style)
+        self.write(f'Score: {self.score}, High score: {self.high_score}', move=True, align="center", font=style)
 
 
     def increase_score(self):
+        """
+        Increases score by one each time you eat food
+        """
         self.score += 1
         self.clear()
         self.write_score()
 
-
-    def game_over(self):
-        self.color('white')
-        self.goto(0,0)
-        self.write('GAME OVER', align=SnakeConfig.allignment, font=SnakeConfig.style)
+    
+    def reset(self):
+        """
+        Resets scoreboard on screen when you loose.
+        You can loose by hitting a wall, or your own tail.
+        """
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open(file='data.txt', mode='w') as f:
+                f.write(str(self.high_score))
+        self.score = 0
+        self.write_score()

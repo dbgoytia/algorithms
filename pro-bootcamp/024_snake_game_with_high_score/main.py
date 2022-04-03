@@ -29,6 +29,9 @@ class GameBoard:
     """
 
     def __init__(self):
+        """
+        Initializes the Gameboard
+        """
         self.init_screen()
         self.snake = Snake()
         self.food = Food()
@@ -39,13 +42,18 @@ class GameBoard:
 
 
     def init_screen(self):
-        # self.screen = TurtleScreen(self.canvas)
+        """
+        Creates the screen, along with it's configuration
+        """
         self.screen = Screen()
         self.screen.setup(width=SnakeConfig.width, height=SnakeConfig.height)
         self.screen.tracer(0)
         
 
     def init_game(self):
+        """
+        Main game loop
+        """
         logger.info('Starting snake game')
         while self.game_is_on:
             self.screen.update()
@@ -55,7 +63,9 @@ class GameBoard:
 
 
     def init_controls(self):
-        # Controls, could be moved to a better configuration file
+        """
+        Controllers for moving the snake
+        """
         self.screen.listen()
         self.screen.onkey(key='Right', fun=self.snake.turn_right)
         self.screen.onkey(key='Left', fun=self.snake.turn_left)
@@ -64,6 +74,9 @@ class GameBoard:
 
 
     def detect_colision(self):
+        """
+        Detects collision with food, walls and with own tail
+        """
 
         # Detect collission with food
         if self.snake.head.distance(self.food) < 5:
@@ -71,11 +84,12 @@ class GameBoard:
             self.food.refresh()
             self.snake.extend()
 
+        # Detect colission with wall
         if SnakeConfig.width/2  - abs(self.snake.head.xcor()) < SnakeConfig.shape_width_pixels \
             or SnakeConfig.height/2 - abs(self.snake.head.ycor()) < SnakeConfig.shape_height_pixels:
             logger.info('You lose')
-            self.game_is_on = False
-            self.scoreboard.game_over()
+            self.scoreboard.reset()
+            self.snake.reset()
 
 
         # Detect colission with own tail
@@ -83,8 +97,8 @@ class GameBoard:
             if self.snake.head.distance(segment) < 5:
                 logger.debug(f'distance: {self.snake.head.distance(segment)}')
                 logger.debug(f'head: {self.snake.head.pos()}, segment: {segment.pos()}')
-                self.game_is_on = False
-                self.scoreboard.game_over()
+                self.scoreboard.reset()
+                self.snake.reset()
         
     
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 # Standard library
 import logging
 from turtle import Turtle
+from collections import deque
 
 # Third party modulesc
 
@@ -28,6 +29,14 @@ class Snake(Turtle):
         starting_positions = [(0, 0), (-0.5, 0), (-1, 0)]
         for pos in starting_positions:
             self.add_segment(pos)
+
+    
+    def reset(self):
+        for seg in self.body:
+            seg.goto(1000, 1000)
+        self.body.clear()
+        self.init_body()
+        self.head = self.body[0]
         
 
     def add_segment(self, pos:list):
