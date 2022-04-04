@@ -35,6 +35,7 @@ class GameBoard:
         self.food = Food()
         self.game_is_on = True
         self.scoreboard = Scoreboard()
+        self.keys_activate()
         self.init_game()
 
 
@@ -45,6 +46,7 @@ class GameBoard:
         self.screen = Screen()
         self.screen.setup(width=SnakeConfig.width, height=SnakeConfig.height)
         self.screen.tracer(0)
+
         
 
     def init_game(self):
@@ -54,21 +56,11 @@ class GameBoard:
         logger.info('Starting snake game')
         while self.game_is_on:
             self.screen.update()
-            self.keys_deactivate()
+            self.snake.can_move = False
             self.snake.move()
             time.sleep(0.1)
-            self.keys_activate()
             self.detect_colision()
-
-
-    def keys_deactivate(self):
-        """
-        Deactivates keys on screen for good flow
-        """
-        self.screen.onkey(key='Right', fun=None)
-        self.screen.onkey(key='Left', fun=None)
-        self.screen.onkey(key='Up', fun=None)
-        self.screen.onkey(key='Down', fun=None)
+            self.snake.can_move = True
 
 
     def keys_activate(self):

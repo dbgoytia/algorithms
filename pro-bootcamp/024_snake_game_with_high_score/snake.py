@@ -1,6 +1,7 @@
 # Standard library
 import logging
 from turtle import Turtle
+import time
 
 # Third party modulesc
 
@@ -22,6 +23,7 @@ class Snake(Turtle):
         self.body = []
         self.init_body()
         self.head = self.body[0]
+        self.can_move = True
     
 
     def init_body(self):
@@ -58,43 +60,49 @@ class Snake(Turtle):
         self.add_segment(self.body[-1].pos())
 
 
-    def move(self):        
+    def move(self):
+        self.can_move = False
         for seg_num in range( len(self.body) - 1 , 0 , -1): # Start with a three segment snake
             # Each piece moves to the position of the piece in front of it to get a good animation
             new_x = self.body[seg_num - 1].xcor()
             new_y = self.body[seg_num - 1].ycor()
             self.body[seg_num].goto(new_x, new_y)
         self.body[0].forward(SnakeConfig.speed)
+        self.can_move = True
         logger.debug(f'Head position is {self.body[0].pos()}')
         logger.debug(f'Head angle is {self.body[0].heading()}')
 
 
     def turn_right(self):
-        logger.debug(f'Moving right')
-        if self.body[0].heading() != 180:
-            for x in self.body:
-                x.setheading(0)  
+        if self.can_move:
+            logger.debug(f'Moving right')
+            if self.body[0].heading() != 180:
+                for x in self.body:
+                    x.setheading(0)  
         
 
     def turn_left(self):
-        logger.debug(f'Moving left')
-        if self.body[0].heading() != 0:
-            for x in self.body:
-                x.setheading(180)
+        if self.can_move:
+            logger.debug(f'Moving left')
+            if self.body[0].heading() != 0:
+                for x in self.body:
+                    x.setheading(180)
 
 
 
     def turn_down(self):
-        logger.debug(f'Moving down')
-        if self.body[0].heading() != 90:
-            for x in self.body:
-                x.setheading(270)  
+        if self.can_move:
+            logger.debug(f'Moving down')
+            if self.body[0].heading() != 90:
+                for x in self.body:
+                    x.setheading(270)  
 
 
     
     def turn_up(self):
-        logger.debug(f'Moving up')
-        if self.body[0].heading() != 270:
-            for x in self.body:
-                x.setheading(90)
+        if self.can_move:
+            logger.debug(f'Moving up')
+            if self.body[0].heading() != 270:
+                for x in self.body:
+                    x.setheading(90)
 
