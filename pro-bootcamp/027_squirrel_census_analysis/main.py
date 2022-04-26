@@ -72,7 +72,6 @@ def get_squirrel_shift_activity(squirrel_census_dataset:pandas.DataFrame) -> pan
     return activity_by_shift
 
 
-
 def load_squirrel_census_dataset(csv_dataset_filepath:str = './data/2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv') -> pandas.DataFrame:
     """
     Loads the census dataset into a pandas.DataFrame
@@ -81,8 +80,6 @@ def load_squirrel_census_dataset(csv_dataset_filepath:str = './data/2018_Central
         pandas.DataFrame: Dataset for the squirrel census
     """
     return pandas.read_csv(csv_dataset_filepath)
-
-
 
 
 if __name__ == '__main__':
