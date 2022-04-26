@@ -37,7 +37,7 @@ def squirrel_age_distribuition(squirrel_census_dataset:pandas.DataFrame) -> pand
     scd_trimmed = squirrel_census_dataset[['X', 'Y', 'Age']]
     scd_trimmed['Age'].replace('?', 'Unknown', inplace=True)
     scd_trimmed['Age'].fillna('Unknown', inplace=True)
-    return scd_trimmed.groupby('Age').nunique()
+    return scd_trimmed.groupby('Age').nunique()['X']
 
 
 def get_squirrel_activity(squirrel_census_dataset:pandas.DataFrame) -> pandas.DataFrame:
