@@ -26,13 +26,15 @@ class GameBoard():
         guessed_states = []
         while len(guessed_states) <= 50 : 
             answer_state = self.screen.textinput(title=f'{len(guessed_states)}/50 States correct', prompt='What is another state game?')
-            self.states_data = states_data_fetcher.load_csv_data()
-            if states_data_fetcher.is_state(answer_state, self.states_data):
-                guessed_states.append(answer_state)
-                coordinates = states_data_fetcher.get_coordinates(answer_state, self.states_data)
-                self.update_answered_state(answer_state, coordinates)
-        self.screen.clear()
-
+            if answer_state:
+                self.states_data = states_data_fetcher.load_csv_data()
+                if states_data_fetcher.is_state(answer_state, self.states_data):
+                    guessed_states.append(answer_state)
+                    coordinates = states_data_fetcher.get_coordinates(answer_state, self.states_data)
+                    self.update_answered_state(answer_state, coordinates)
+            else:
+                break
+        self.screen.exitonclick()
 
     def init_turtle(self):
         """
