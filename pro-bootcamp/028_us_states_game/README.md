@@ -16,4 +16,4 @@ so in order to display the map I had to use this format.
 
 
 ## Game
-![alt text](https://github.com/dbgoytia/algorithms/blob/fb09565ee2b14ccbd71ced4800570512d390f67c/pro-bootcamp/024_snake_game_with_high_score/snake.png)
+![alt text](https://github.com/dbgoytia/algorithms/blob/0fd9decaf9ce4035dc17a6da64a85aed40ab29ef/pro-bootcamp/028_us_states_game/us-states-game.png)
