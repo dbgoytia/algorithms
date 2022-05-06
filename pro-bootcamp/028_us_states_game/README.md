@@ -1,8 +1,8 @@
 # The US State Game
 
-The idea is to write as many names of the US states as you can remember.
+The idea is t help you learn the states of the United States.
 You only need to type in the state, and if the state exists, you'll see
-it appear on the screen.
+it appear on the screen. You'll win once you've guessed all the states correctly
 
 
 # Implementation
