@@ -13,3 +13,7 @@ Pandas.
 
 One funny thing I found is that Python.Turtle only works with gif images,
 so in order to display the map I had to use this format.
+
+
+## Game
+![alt text](https://github.com/dbgoytia/algorithms/blob/fb09565ee2b14ccbd71ced4800570512d390f67c/pro-bootcamp/024_snake_game_with_high_score/snake.png)
