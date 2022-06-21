@@ -77,3 +77,13 @@ Create a list that contains the names longer than 5 characters long, and all in 
 >>> long_names_caps
 ['JAVIER']
 ```
+
+
+## Output
+
+```
+Enter a word for converting to nato alphabet:november
+['November', 'Oscar', 'Victor', 'Echo', 'Mike', 'Bravo', 'Echo', 'Romeo']
+Continue? y/n: 
+
+```
