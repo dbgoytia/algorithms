@@ -6,7 +6,7 @@ def get_nato_phonetic_alphabet_dict() -> dict:
     :returns:
         (dict): A dictionary containing nato phonetic alphabet
     """
-    return pd.read_csv('./nato_phonetic_alphabet.csv', index_col=0, header=None, squeeze=True, skiprows=1).to_dict()
+    return pd.read_csv('./nato_phonetic_alphabet.csv', index_col=0, header=None, skiprows=1).squeeze().to_dict()
 
 
 def construct_nato_word(word:str, nato_alphabet:dict) -> list:
